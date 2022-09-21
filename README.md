@@ -9,10 +9,8 @@
 This browser based web application to ...
 
 * Hi my name is Olga. I'm excited about this project because it will help people I know.
-
 * Hi my name is Jason. I'm excited about this project because...
-Hi my name is Natalie and I'm excited about this project.
-Hi I'm Jason
+* Hi my name is Natalie and I'm excited about this project.
 
 ## Technologies
 
