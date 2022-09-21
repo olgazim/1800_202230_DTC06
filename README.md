@@ -8,11 +8,8 @@
 
 This browser based web application to ...
 
-* Hi my name is Olga. I'm excited about this project because it will help people I know.
-
 * Hi my name is Jason. I'm excited about this project because...
 Hi my name is Natalie and I'm excited about this project.
-Hi I'm Jason
 
 ## Technologies
 
@@ -22,11 +19,6 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap
 * ...
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 4229941eb06a8336fa326a5cd6fa300a08669529
 
 ## Content
 
