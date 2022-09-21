@@ -7,8 +7,12 @@
 ## General Info
 
 This browser based web application to ...
+<<<<<<< HEAD
 
 * Hi my name is Jason. I'm excited about this project because...
+=======
+Hi my name is Natalie and I'm excited about this project.
+>>>>>>> 38893c0b09b20d7a8420e70739174888ea98fcdb
  
 ## Technologies
 
