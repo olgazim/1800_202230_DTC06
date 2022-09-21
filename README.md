@@ -7,13 +7,11 @@
 ## General Info
 
 This browser based web application to ...
-<<<<<<< HEAD
 
 * Hi my name is Jason. I'm excited about this project because...
-=======
 Hi my name is Natalie and I'm excited about this project.
->>>>>>> 38893c0b09b20d7a8420e70739174888ea98fcdb
- 
+Hi I'm Jason
+
 ## Technologies
 
 Technologies used for this project:
@@ -22,7 +20,7 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap
 * ...
- 
+
 ## Content
 
 Content of the project folder:
