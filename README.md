@@ -19,7 +19,6 @@ Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap
-* THIS IS ALL CAPS
 * ...
 
 ## Content
