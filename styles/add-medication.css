@@ -70,3 +70,19 @@ i.other-icon-color {
   outline: 0;
   box-shadow: none;
 }
+
+#update {
+  margin-top: 2%;
+  margin-left: 41.5%;
+  border-radius: 10px;
+  padding: 5%;
+  width: 25%;
+  color: white;
+  text-align: center;
+  border: none;
+  background-color: #406882;
+}
+
+#update:hover {
+  color: lightgrey;
+}
