@@ -19,6 +19,7 @@ Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap
+* add another technology
 * ...
 
 ## Content
