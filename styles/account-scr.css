@@ -11,3 +11,18 @@
 .material-icons.edit {
     font-size: 25px;
 }
+
+.card-buttons {
+    border: solid gray 1px;
+    padding: 25px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.btn.btn-outline-secondary.sign-out {
+    font-size: 25px;
+    margin-left: 30%;
+    width: 30%;
+    border-radius: 25px;
+}
