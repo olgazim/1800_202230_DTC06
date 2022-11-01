@@ -2,8 +2,15 @@
     padding: 10px;
 }
 
-#dropdown {
-    font-size: 20px;
+.material-icons.md-48{
+    padding: 10px;
+    display: inline-block;
+}
+
+.dropdown {
+    font-size: 10px;
+    padding: 5px;
+    display: inline-block;
 }
 
 .card-container {
