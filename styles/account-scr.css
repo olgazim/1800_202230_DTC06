@@ -1,0 +1,31 @@
+#app-title {
+    padding: 10px;
+}
+
+.material-icons.profile {
+    font-size: 100px;
+    color: lightgray;
+    padding: 10px;
+}
+
+.material-icons.edit {
+    font-size: 25px;
+}
+
+.card-buttons {
+    border: solid gray 1px;
+    padding: 25px;
+    font-size: 20px;
+    margin-bottom: 70px;
+}
+
+#profile-label {
+    padding-left: 10px;
+}
+
+.btn.btn-outline-primary.sign-out {
+    font-size: 25px;
+    margin-left: 30%;
+    width: 30%;
+    border-radius: 20px;
+}
