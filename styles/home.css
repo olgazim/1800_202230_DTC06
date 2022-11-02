@@ -1,9 +1,5 @@
-#app-title {
-    padding: 10px;
-}
-
 .material-icons.md-48.acc-circle{
-    padding-left: 10px;
+    padding: 10px;
     display: inline-block;
     font-size: 48px;
 }
