@@ -3,13 +3,14 @@
 }
 
 .material-icons.md-48.acc-circle{
-    padding: 10px;
+    padding-left: 10px;
     display: inline-block;
+    font-size: 48px;
 }
 
 .dropdown {
     font-size: 10px;
-    padding: px;
+    padding: 5px;
     display: inline-block;
 }
 

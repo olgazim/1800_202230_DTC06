@@ -25,19 +25,51 @@
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./../styles/home.css">
     <link href="./../styles/pillsList.css" rel="stylesheet">
+    <link href="./../styles/top-nav-calendar.css" rel="stylesheet">
+    <script src="./../scripts/top-nav-calendar.js" defer></script>
+
 </head>
 
 <body>
-    <h1 id="app-title"> MediTrack </h1>
-    <hr>
-    <section>
-        Add: Calendar API
-    </section>
-    <hr>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./../images/image.jpg" height="36" />
+                MediTrack
+            </a>
+            <!-- <span class="material-icons"> add_circle_outline </span> -->
+        </div>
+    </nav>
+    
+    <!--Calendar-->
+    <body onload="fillWeeklyCalendarHeader()"></body>
+    
+    <ul class="weekdays">
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>
+    </ul>
+
+    <ul class="days">
+        <li id="day_0">1</li>
+        <li id="day_1">2</li>
+        <li id="day_2">3</li>
+        <li id="day_3">4</li>
+        <li id="day_4">5</li>
+        <li id="day_5">6</li>
+        <li id="day_6">7</li>
+    </ul>
+
+    <!-- Profile icon and dropdown menu -->
     <div>
         <div class="material-icons md-48 acc-circle">account_circle</div>
         <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Account Name
             </a>
@@ -119,9 +151,9 @@
     </div>
 
 
-        <!-- Bottom Navbar -->
+    <!-- Bottom Navbar -->
     <footer>
-        <div class="navbar justify-content-evenly fixed-bottom py-3 bg-light">
+        <div class="navbar justify-content-evenly fixed-bottom py-3 bg-primary">
             <div class="container text-center">
                 <i class="material-icons md-48">home</i>
                 <i class="material-icons md-36">calendar_today</i>
