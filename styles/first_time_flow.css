@@ -1,3 +1,7 @@
+#welcome {
+    justify-items: center;
+}
+
 .navbar{
     background-color: #1a374d;
 }
@@ -47,6 +51,21 @@ body {
 #avatar_upload{
     display: none;
 }
+
+.rounded-circle {
+    width: 150px;
+}
+
+.avatar-wrapper {
+    position: relative;
+}
+
+.add-avatar {
+    color: #1a374d;
+    position: absolute;
+    bottom: 0;
+}
+
 
 h1 {
     color: #1a374d;
