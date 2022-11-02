@@ -13,8 +13,13 @@
     display: inline-block;
 }
 
-.card-container {
+/* .card-container {
     padding: 10px;
+    margin-left: 30%;
+    width: 60%;
+} */
+
+#pillsListTitle {
     margin-left: 30%;
     width: 60%;
 }
