@@ -74,19 +74,19 @@
         <div class="col-md-5">
           <div class="card">
             <div class="card-body py-md-3">
-              <form>
-                <!-- A C C O U N T  P I C T U R E -->
-                <div class="form-group">
-                    <label>
-                    <img src="../images/avatar.jpg" class="rounded-circle justify-content-center mb-4" style="width: 150px;" alt="Avatar" />
-                        <!-- <input id="avatar" type="file" name="profile_photo" placeholder="Photo" required="" capture> -->
-                        <input type="file" name="file" id="avatar_upload" >
-                        <i class="material-icons" id="avatar">
-                        add
-                        </i>
-                 </label>
+              <form  id="sign-up-form" class="row g-3 needs-validation" novalidate>
+                <!-- A C C O U N T   P I C T U R E -->
+                <div class="form-group mb-4">
+                  <div class="d-flex justify-content-start">
+                    <input type="file" name="file" id="avatar_upload" class="avatar">
+                    <label for="avatar_upload" class="flex-column d-flex avatar-wrapper align-items-center">
+                      <img src="../images/avatar.jpg" class="rounded-circle justify-content-center" 
+                        alt="Avatar" />
+                      <!-- <i class="material-icons add-avatar" id="avatar">add</i> -->
+                      <span class="add-avatar"> Edit</span>
+                    </label>
+                  </div>
                 </div>
-                
                 <!--   N A M E   -->
                 <div class="form-group">
                   <input
@@ -159,6 +159,6 @@
     <!---------------------------------------------->
     <script src="../scripts/firebase.js"></script>
     <!-- <script src="./scripts/skeleton.js"></script> -->
-    <script src="../scripts/sign_in.js"></script>
+    <script src="../scripts/sign_up.js"></script>
   </body>
 </html>
