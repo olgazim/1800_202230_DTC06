@@ -46,7 +46,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles/sign_up_scr.css" />
+    <link rel="stylesheet" href="../styles/first_time_flow.css" />
   </head>
 
   <body>
@@ -75,6 +75,18 @@
           <div class="card">
             <div class="card-body py-md-3">
               <form>
+                <!-- A C C O U N T  P I C T U R E -->
+                <div class="form-group">
+                    <label>
+                    <img src="../images/avatar.jpg" class="rounded-circle justify-content-center mb-4" style="width: 150px;" alt="Avatar" />
+                        <!-- <input id="avatar" type="file" name="profile_photo" placeholder="Photo" required="" capture> -->
+                        <input type="file" name="file" id="avatar_upload" >
+                        <i class="material-icons" id="avatar">
+                        add
+                        </i>
+                 </label>
+                </div>
+                
                 <!--   N A M E   -->
                 <div class="form-group">
                   <input
@@ -127,7 +139,7 @@
                 </div>
                 <!--   S U B M I T   -->
                 <div
-                  class="align-items-center justify-content-center"
+                  class="d-flex flex-row align-items-center justify-content-center"
                 >
                   <button type="submit" class="btn w-50" id="submit">
                     Create Account
