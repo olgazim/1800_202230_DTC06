@@ -3,6 +3,14 @@
     width: 60%;
 }
 
+.navbar{
+    background-color: #1a374d;
+}
+
+.backgroundcolor {
+    background-color: #1a374d;
+}
+
 .Pills {
     margin-top: 5%;
     border-radius: 10px;
@@ -40,12 +48,18 @@
     margin-top: 2%;
     margin-left: 40%;
     border-radius: 10px;
+    padding: 2%;
     width: 15%;
     color: white;
     text-align: center;
     border: none;
+    background-color: #406882;
 }
 
 #addMedication:hover {
     color: lightgrey;
+}
+
+footer {
+    background-color: #1a374d;
 }

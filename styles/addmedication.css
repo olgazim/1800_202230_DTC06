@@ -1,0 +1,35 @@
+.cancelButton {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.cancelButton:hover {
+    color: darkgrey;
+}
+
+#informationBoxes {
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+input {
+    border: 2px solid black;
+    width: 30%;
+    margin-bottom: 5%;
+}
+
+#add {
+    margin-top: 2%;
+    margin-left: 41.5%;
+    border-radius: 10px;
+    padding: 2%;
+    width: 15%;
+    color: white;
+    text-align: center;
+    border: none;
+    background-color: #406882;
+}
+
+#add:hover {
+    color: lightgrey;
+}
