@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+'use strict';
 
+const { auth, initializeApp } = window.firebase;
 
 //----------------------------------------
 //  Firebase configuration
@@ -18,8 +18,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.13.0/firebase
 // initialize the Firebase app
 // initialize Firestore database 
 //--------------------------------------------
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-
-//const authClient = auth();
-//window.authClient = authClient
+initializeApp(firebaseConfig);
+const authClient = auth();
+window.authClient = authClient;
