@@ -1,3 +1,7 @@
+.navbar {
+    background-color: #1a374d;
+}
+
 .material-icons.md-48.acc-circle{
     padding: 10px;
     display: inline-block;
@@ -22,5 +26,5 @@
 }
 
 i.icon-blue {
-    color: blue;
+    color: #406882;
 }
