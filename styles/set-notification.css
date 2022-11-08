@@ -32,3 +32,15 @@ svg {
   text-align: center;
   margin-top: 50px;
 }
+
+footer {
+  background-color: #1A374D;
+}
+
+i.current-icon-color {
+  color: white;
+}
+
+i.other-icon-color {
+  color: #406882;
+}
