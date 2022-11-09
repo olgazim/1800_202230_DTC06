@@ -9,9 +9,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
-    <link href="./../styles/bottomnav.css" rel="stylesheet">
-    <link href="./../styles/pillsList.css" rel="stylesheet">
-    <link href="./../styles/top-nav-calendar.css" rel="stylesheet">
+  <link href="./../styles/bottomnav.css" rel="stylesheet">
+  <link href="./../styles/pillsList.css" rel="stylesheet">
+  <link href="./../styles/top-nav-calendar.css" rel="stylesheet">
 
   <!-- Boostrap Library JS CDN  go here -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -102,39 +102,45 @@
   <li>31</li> -->
   </ul>
 
-
+  <div id="pillsListTitle">
+    <h4>Your Medication</h4>
+  </div>
   <div id="pillsList"></div>
 
-<!-- Bottom Navbar -->
-<footer>
-  <div class="navbar justify-content-evenly fixed-bottom py-3">
-    <div class="container text-center">
-      <button onclick="document.location='home.html'" class="material-icons md-48 other-icon-color">home</button>
-      <button onclick="document.location='notificationscr.html'" class="material-icons md-36 other-icon-color">calendar_today</button>
-      <button onclick="document.location='pills_list.html'" class="material-icons md-36 current-icon-color">medication</button>
-      <button onclick="document.location='account-scr.html'" class="material-icons md-36 other-icon-color">account_circle</button>
-
-    </div>
-
-  </div>
-
-  <button id="addMedication" style="margin-bottom: 90px;" href="addmedication.html">Add Medication</button>
-
-  <!-- <div class="d-grid gap-2">
-  <button id="submit" class="btn btn-primary" type="button">Submit</button>
-</div> -->
 
   <!-- Bottom Navbar -->
   <footer>
     <div class="navbar justify-content-evenly fixed-bottom py-3">
       <div class="container text-center">
-        <i class="material-icons md-48 other-icon-color">home</i>
-        <i class="material-icons md-36 other-icon-color">calendar_today</i>
-        <i class="material-icons md-36 current-icon-color">medication</i>
-        <i class="material-icons md-36 other-icon-color">account_circle</i>
+        <button onclick="document.location='home.html'" class="material-icons md-48 other-icon-color">home</button>
+        <button onclick="document.location='notificationscr.html'"
+          class="material-icons md-36 other-icon-color">calendar_today</button>
+        <button onclick="document.location='pills_list.html'"
+          class="material-icons md-36 current-icon-color">medication</button>
+        <button onclick="document.location='account-scr.html'"
+          class="material-icons md-36 other-icon-color">account_circle</button>
+
       </div>
+
     </div>
-  </footer>
+
+    <button id="addMedication" style="margin-bottom: 90px;" href="addmedication.html">Add Medication</button>
+
+    <!-- <div class="d-grid gap-2">
+  <button id="submit" class="btn btn-primary" type="button">Submit</button>
+</div> -->
+
+    <!-- Bottom Navbar -->
+    <footer>
+      <div class="navbar justify-content-evenly fixed-bottom py-3">
+        <div class="container text-center">
+          <i class="material-icons md-48 other-icon-color">home</i>
+          <i class="material-icons md-36 other-icon-color">calendar_today</i>
+          <i class="material-icons md-36 current-icon-color">medication</i>
+          <i class="material-icons md-36 other-icon-color">account_circle</i>
+        </div>
+      </div>
+    </footer>
 </body>
 
 </html>
