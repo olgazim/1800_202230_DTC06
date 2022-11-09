@@ -48,8 +48,8 @@ const onSubmit = async (event) => {
 
       console.log('Auth data:', authData);
       // Actions when user is created (e.g. redirect to dashboard)
-      window.alert('You will be redirected to dashboard page');
-      window.location.href = "dashboard.html";
+      // window.alert('You will be redirected to dashboard page');
+      window.location.href = "home.html";
     } catch (error) {
       // Actions when user creation failed (e.g. redirect to login page)
 
