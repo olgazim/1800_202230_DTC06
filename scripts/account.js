@@ -1,5 +1,6 @@
 'use strict';
 
+var currentUser
 
 //----------------------------------------
 //  Get DOM nodes
@@ -34,3 +35,56 @@ const onSignOut = async () => {
 //  Add event listeners
 //----------------------------------------
 buttonSignOut.addEventListener('click', onSignOut, false);
+
+
+
+function populateInfo() {
+  firebase.auth().onAuthStateChanged(user => {
+    //Check if user is signed in
+    if (user) {
+      currentUser = db.collection("users").doc(user.uid)
+      currentUser.get().then(userDoc => {
+        var userName = userDoc.data().name;
+        var email = userDoc.data().email;
+        var profiles = userDoc.data().profiles;
+
+        // if the data fields are not empty , then enrich form with the data
+        if (userName != null) {
+          document.getElementById("userName").value = userName;
+        }
+        if (email != null) {
+          document.getElementById("email").value = email;
+        }
+
+      console.log(userName, email)
+      })
+    } else {
+      // User is not signed in
+      console.log("No user is signed in")
+    }
+  });
+}
+
+populateInfo();
+
+function editUserInfo() {
+  document.getElementById("userInfo").disabled = false;
+  // change buttons
+  document.getElementById("saveBtn").removeAttribute("hidden");
+  document.getElementById("editBtn").setAttribute("hidden", true);
+}
+
+function saveUserInfo() {
+  userName = document.getElementById("userName").value;
+  email = document.getElementById("email").value;
+  currentUser.update({
+    name: userName,
+    email: email
+  }).then(
+    () => {
+      console.log("user document successfully updated")
+    }
+  )
+  document.getElementById("saveBtn").setAttribute("hidden", true);
+  document.getElementById("editBtn").removeAttribute("hidden")
+}

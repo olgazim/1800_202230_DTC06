@@ -18,6 +18,7 @@ const { auth, initializeApp } = window.firebase;
 // initialize the Firebase app
 // initialize Firestore database 
 //--------------------------------------------
-initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 const authClient = auth();
-window.authClient = authClient
+window.authClient = authClient;
