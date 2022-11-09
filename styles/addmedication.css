@@ -1,51 +1,57 @@
 .cancelButton {
-    text-decoration: none;
-    color: aliceblue;
+  text-decoration: none;
+  color: aliceblue;
 }
 
 .cancelButton:hover {
-    color: darkgrey;
+  color: darkgrey;
 }
 
 #informationBoxes {
-    margin-top: 2%;
-    margin-left: 40%;
+  margin-top: 2%;
+  margin-left: 40%;
 }
 
 input {
-    border: 2px solid black;
-    width: 30%;
-    margin-bottom: 5%;
+  border: 2px solid black;
+  width: 30%;
+  margin-bottom: 5%;
 }
 
 #add {
-    margin-top: 2%;
-    margin-left: 41.5%;
-    border-radius: 10px;
-    padding: 2%;
-    width: 15%;
-    color: white;
-    text-align: center;
-    border: none;
-    background-color: #406882;
+  margin-top: 2%;
+  margin-left: 41.5%;
+  border-radius: 10px;
+  padding: 2%;
+  width: 15%;
+  color: white;
+  text-align: center;
+  border: none;
+  background-color: #406882;
 }
 
 #add:hover {
-    color: lightgrey;
+  color: lightgrey;
 }
 
 footer {
-    background-color: #1A374D;
+  background-color: #1a374d;
 }
 
 i.current-icon-color {
-    color: white;
+  color: white;
 }
 
 i.other-icon-color {
-    color: #406882;
+  color: #406882;
 }
 
 .navbar {
-    background-color: #1a374d;
+  background-color: #1a374d;
+}
+
+#pillsListTitle {
+  margin-left: 30%;
+  width: 60%;
+  margin-top: 20px;
 }
