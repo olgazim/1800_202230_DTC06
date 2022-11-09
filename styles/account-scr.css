@@ -29,3 +29,62 @@
     width: 30%;
     border-radius: 20px;
 }
+
+.form-control {
+    background-color: #f8f9fa;
+    /* padding: 20px; */
+    /* padding: 25px 15px; */
+    margin-bottom: 1.3rem;
+}
+
+.form-control:focus {
+    color: #000000;
+    background-color: #ffffff;
+    border: 3px solid #406882;
+    outline: 0;
+    box-shadow: none;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+#userName,
+#email {
+
+    padding: 24px 32px;
+    border-left: none;
+    border-right: none;
+    border-color: #1a374d;
+    border-radius: 0;
+
+}
+
+#avatar_upload {
+    display: none;
+}
+
+.avatar-wrapper {
+    position: relative;
+}
+
+.add-avatar {
+    color: #1a374d;
+    position: absolute;
+    bottom: 0;
+}
+
+#editBtn {
+    background: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+#saveBtn {
+    background: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1.2em;
+    /* display: none; */
+}
