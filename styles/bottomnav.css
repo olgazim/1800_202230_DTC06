@@ -1,0 +1,11 @@
+.current-icon-color {
+    color: white;
+    background-color: #1A374D;
+    border: none;
+}
+
+.other-icon-color {
+    color: #406882;
+    background-color: #1A374D;
+    border: none;
+}

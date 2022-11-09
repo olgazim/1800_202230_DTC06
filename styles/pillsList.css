@@ -1,51 +1,74 @@
 #pillsList {
-    margin-left: 30%;
-    width: 60%;
+  margin-left: 30%;
+  width: 60%;
+}
+
+.navbar {
+  background-color: #1a374d;
+}
+
+.backgroundcolor {
+  background-color: #1a374d;
+}
+a {
+  color: white;
 }
 
 .Pills {
-    margin-top: 5%;
-    border-radius: 10px;
-    /* text-align: center; */
-    width: 60%;
-    border: 1px solid black;
-    padding-top: 5%;
-    padding-bottom: 10%;
-    padding-left: 5%;
-    padding-right: 5%;
-    box-shadow: 0px 5px gray;
-    margin-bottom: 15px;
+  margin-top: 5%;
+  border-radius: 10px;
+  /* text-align: center; */
+  width: 60%;
+  border: 1px solid black;
+  padding-top: 5%;
+  padding-bottom: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-shadow: 0px 5px gray;
+  margin-bottom: 15px;
 }
 
 .PillName {
-    float: left;
+  float: left;
 }
 
 .PillDosage {
-    float: left;
+  float: left;
 }
 
 .icons {
-    border: none;
-    background-color: none;
-    float: right;
-    margin-left: 5px;
+  border: none;
+  background-color: none;
+  float: right;
+  margin-left: 5px;
 }
 
 .icons:hover {
-    color: grey;
+  color: grey;
 }
 
 #addMedication {
-    margin-top: 2%;
-    margin-left: 40%;
-    border-radius: 10px;
-    width: 15%;
-    color: white;
-    text-align: center;
-    border: none;
+  margin-top: 2%;
+  margin-left: 40%;
+  border-radius: 10px;
+  padding: 2%;
+  width: 15%;
+  color: white;
+  text-align: center;
+  border: none;
+  background-color: #406882;
 }
 
 #addMedication:hover {
-    color: lightgrey;
+  color: lightgrey;
+}
+
+footer {
+  background-color: #1a374d;
+}
+
+#pillsListTitle {
+  margin-left: 30%;
+  width: 60%;
+  margin-top: 20px;
 }

@@ -1,3 +1,11 @@
+.navbar {
+    background-color: #1a374d;
+}
+
+#appName {
+    color: white;
+}
+
 #app-title {
     padding: 10px;
 }

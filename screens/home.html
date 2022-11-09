@@ -1,192 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>MediTrack</title>
-    <meta name="comp1800 template" content="My 1800 App" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <title>Home</title>
+  <meta name="comp1800 template" content="My 1800 App" />
 
-    <!-- Bootstrap Library CSS CDN go here -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Boostrap Library JS CDN  go here -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
-    <!-- Other libraries go here -->
-    <!-- Google Icons (Material Design)-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <!-- Boostrap Library JS CDN  go here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./../styles/home.css" />
-    <link href="./../styles/pillsList.css" rel="stylesheet" />
-    <link href="./../styles/top-nav-calendar.css" rel="stylesheet" />
-    <script src="./../scripts/top-nav-calendar.js" defer></script>
-  </head>
+  <!-- Other libraries go here -->
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary py-2">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./../images/image.jpg" height="36" />
-          MediTrack
-        </a>
-        <!-- <span class="material-icons"> add_circle_outline </span> -->
-      </div>
-    </nav>
+  <!-- Link to styles of your own -->
+  <link rel="stylesheet" href="./../styles/bottomnav.css">
+  <link rel="stylesheet" href="./../styles/home.css" />
+  <link href="./../styles/pillsList.css" rel="stylesheet" />
+  <link href="./../styles/top-nav-calendar.css" rel="stylesheet" />
+  <script src="./../scripts/top-nav-calendar.js" defer></script>
+</head>
 
-    <!--Calendar-->
-    <body onload="fillWeeklyCalendarHeader()"></body>
-
-    <ul class="weekdays">
-      <li>Sun</li>
-      <li>Mon</li>
-      <li>Tue</li>
-      <li>Wed</li>
-      <li>Thu</li>
-      <li>Fri</li>
-      <li>Sat</li>
-    </ul>
-
-    <ul class="days">
-      <li id="day_0">1</li>
-      <li id="day_1">2</li>
-      <li id="day_2">3</li>
-      <li id="day_3">4</li>
-      <li id="day_4">5</li>
-      <li id="day_5">6</li>
-      <li id="day_6">7</li>
-    </ul>
-
-    <!-- Profile icon and dropdown menu -->
-    <div class="material-icons md-48 acc-circle">account_circle</div>
-    <div class="dropdown">
-      <a
-        class="btn btn-primary dropdown-toggle"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Account Name
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg py-2">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./../images/image.jpg" height="36" />
+        <span id="appName"> MediTrack </span>
       </a>
-
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#"> User Name 1</a></li>
-        <li><a class="dropdown-item" href="#"> User Name 2 </a></li>
-      </ul>
+      <!-- <span class="material-icons"> add_circle_outline </span> -->
     </div>
-    <hr />
-    <!-- Medication List Cards -->
-    <!-- <link href="./../assets/medicine-cards.html" rel="import"> -->
+  </nav>
 
-    <div id="pillsListTitle">
-      <h4>Your Scheduled Medications</h4>
-    </div>
-    <div id="pillsList">
-      <div class="Pills">
-        <div class="PillName"><b>Ventolin</b></div>
-        <br />
-        <button class="icons">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-trash3"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
-            />
-          </svg>
-        </button>
-        <button class="icons">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-pencil-square"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-            />
-            <path
-              fill-rule="evenodd"
-              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-            />
-          </svg>
-        </button>
-        <br />
-        <div class="PillDosage">Dosage: 20mg</div>
-      </div>
+  <!--Calendar-->
 
-      <div class="Pills">
-        <div class="PillName"><b>Tylenol</b></div>
-        <br />
-        <button class="icons">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-trash3"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
-            />
-          </svg>
-        </button>
-        <button class="icons">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-pencil-square"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-            />
-            <path
-              fill-rule="evenodd"
-              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-            />
-          </svg>
-        </button>
-        <br />
-        <div class="PillDosage">Dosage: 40mg</div>
-      </div>
+  <body onload="fillWeeklyCalendarHeader()"></body>
+
+  <ul class="weekdays">
+    <li>Sun</li>
+    <li>Mon</li>
+    <li>Tue</li>
+    <li>Wed</li>
+    <li>Thu</li>
+    <li>Fri</li>
+    <li>Sat</li>
+  </ul>
+
+  <ul class="days">
+    <li id="day_0">1</li>
+    <li id="day_1">2</li>
+    <li id="day_2">3</li>
+    <li id="day_3">4</li>
+    <li id="day_4">5</li>
+    <li id="day_5">6</li>
+    <li id="day_6">7</li>
+  </ul>
+
+  <!-- Profile icon and dropdown menu -->
+  <div class="material-icons md-48 acc-circle">account_circle</div>
+  <div class="dropdown">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Account Name
+    </a>
+
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#"> User Name 1</a></li>
+      <li><a class="dropdown-item" href="#"> User Name 2 </a></li>
+    </ul>
+  </div>
+  <hr />
+
+  <!-- Medication List Cards -->
+  <!-- <link href="./../assets/medicine-cards.html" rel="import"> -->
+
+  <div id="pillsListTitle">
+    <h4>Your Scheduled Medications</h4>
+  </div>
+  <div id="pillsList">
+    <div class="Pills">
+      <div class="PillName"><b>Ventolin</b></div>
+      <br />
+      <button class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3"
+          viewBox="0 0 16 16">
+          <path
+            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+        </svg>
+      </button>
+      <button class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square"
+          viewBox="0 0 16 16">
+          <path
+            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+          <path fill-rule="evenodd"
+            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+        </svg>
+      </button>
+      <br />
+      <div class="PillDosage">Dosage: 20mg</div>
     </div>
 
-    <!-- Bottom Navbar -->
-    <footer>
-      <div class="navbar justify-content-evenly fixed-bottom py-3 bg-primary">
-        <div class="container text-center">
-          <i class="material-icons md-48">home</i>
-          <i class="material-icons md-36">calendar_today</i>
-          <i class="material-icons md-36">medication</i>
-          <i class="material-icons md-36">account_circle</i>
-        </div>
+    <div class="Pills">
+      <div class="PillName"><b>Tylenol</b></div>
+      <br />
+      <button class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3"
+          viewBox="0 0 16 16">
+          <path
+            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+        </svg>
+      </button>
+      <button class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square"
+          viewBox="0 0 16 16">
+          <path
+            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+          <path fill-rule="evenodd"
+            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+        </svg>
+      </button>
+      <br />
+      <div class="PillDosage">Dosage: 40mg</div>
+    </div>
+  </div>
+
+  <!-- Bottom Navbar -->
+  <footer>
+    <div class="navbar justify-content-evenly fixed-bottom py-3">
+      <div class="container text-center">
+        <button onclick="document.location='home.html'" class="material-icons md-48 current-icon-color">home</button>
+        <button onclick="document.location='notificationscr.html'"
+          class="material-icons md-36 other-icon-color">calendar_today</button>
+        <button onclick="document.location='pills_list.html'"
+          class="material-icons md-36 other-icon-color">medication</button>
+        <button onclick="document.location='account-scr.html'"
+          class="material-icons md-36 other-icon-color">account_circle</button>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+
+</body>
+
 </html>

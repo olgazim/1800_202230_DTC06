@@ -1,3 +1,11 @@
+.navbar{
+    background-color: #1a374d;
+}
+
+#appName {
+    color: white;
+}
+
 .material-icons.md-48.acc-circle{
     padding: 10px;
     display: inline-block;
@@ -19,4 +27,24 @@
 #pillsListTitle {
     margin-left: 30%;
     width: 60%;
+}
+
+footer {
+    background-color: #1A374D;
+}
+
+i.current-icon-color {
+    color: white;
+}
+
+i.other-icon-color {
+    color: #406882;
+}
+
+a.dropdown-toggle, a.dropdown-toggle.show {
+    background-color: #406882;
+}
+
+a.dropdown-toggle:hover {
+    background-color: rgb(57, 88, 109);
 }

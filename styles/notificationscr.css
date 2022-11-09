@@ -1,3 +1,7 @@
+#appName {
+  color: white;
+}
+
 .date {
   text-align: center;
   padding-top: 50px;
@@ -22,4 +26,21 @@
 
 .Pills {
   text-align: center;
+}
+
+footer {
+  background-color: #1a374d;
+}
+
+i.current-icon-color {
+  color: white;
+}
+
+i.other-icon-color {
+  color: #406882;
+}
+#pillsListTitle {
+  margin-left: 30%;
+  width: 60%;
+  margin-top: 20px;
 }
