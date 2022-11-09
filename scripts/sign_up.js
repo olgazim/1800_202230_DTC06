@@ -51,8 +51,8 @@ const onSubmit = async (event) => {
 
   if (isValid) {
     // get email and password values to pass to Firebase
-    const email = form.elements[1].value;
-    const password = form.elements[2].value;
+    const email = form.elements[2].value;
+    const password = form.elements[3].value;
     console.log(email, password);
 
     // fetch Firebase auth API
@@ -62,13 +62,13 @@ const onSubmit = async (event) => {
       console.log('Auth data:', authData);
       // Actions when user is created (e.g. redirect to dashboard)
       window.alert('You will be redirected to dashboard page');
-      window.location.href = "dashboard.html";
+      window.location.href = "home.html";
     } catch (error) {
       // Actions when user creation failed (e.g. redirect to login page)
       // Check if user already exists
       if (error.code === 'auth/email-already-in-use') {
         // Redirect to login page
-        window.alert('You will be redirected to sign in page');
+        window.alert('Congratulations!\n You\'ve successfully created account in MediTrack.');
         window.location.href = "sign_in.html";
       }
 
