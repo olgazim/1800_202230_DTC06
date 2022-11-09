@@ -34,7 +34,7 @@ svg {
 }
 
 footer {
-  background-color: #1A374D;
+  background-color: #1a374d;
 }
 
 i.current-icon-color {
@@ -43,4 +43,17 @@ i.current-icon-color {
 
 i.other-icon-color {
   color: #406882;
+}
+
+.navbar {
+  background-color: #1a374d;
+}
+
+.cancelButton {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.cancelButton:hover {
+  color: darkgrey;
 }
