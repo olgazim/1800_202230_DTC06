@@ -7,6 +7,7 @@ body {font-family: Verdana, sans-serif;}
 
 .active_day {
     color: white !important;
+    background-color: #406882 !important;
 }
 
 /* Month list */
