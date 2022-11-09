@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
 
-//-- ToDo: reuse firebaseConfig from firebase.js
+//ToDo: update to use firebaseConfig from firebase.js
   const firebaseConfig = {
     apiKey: "AIzaSyDDJ9Pa2j2d6HWpUyv87_1rGE3yugiOO48",
     authDomain: "meditrack-1a12b.firebaseapp.com",
