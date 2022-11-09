@@ -66,3 +66,9 @@ a {
 footer {
   background-color: #1a374d;
 }
+
+#pillsListTitle {
+  margin-left: 30%;
+  width: 60%;
+  margin-top: 20px;
+}
