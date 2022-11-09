@@ -29,7 +29,7 @@
 }
 
 footer {
-  background-color: #1A374D;
+  background-color: #1a374d;
 }
 
 i.current-icon-color {
@@ -38,4 +38,9 @@ i.current-icon-color {
 
 i.other-icon-color {
   color: #406882;
+}
+#pillsListTitle {
+  margin-left: 30%;
+  width: 60%;
+  margin-top: 20px;
 }
