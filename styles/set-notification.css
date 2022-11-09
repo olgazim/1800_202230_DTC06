@@ -57,3 +57,12 @@ i.other-icon-color {
 .cancelButton:hover {
   color: darkgrey;
 }
+
+a.dropdown-toggle,
+a.dropdown-toggle.show {
+  background-color: #406882;
+}
+
+a.dropdown-toggle:hover {
+  background-color: rgb(57, 88, 109);
+}
