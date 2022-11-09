@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./../styles/bottomnav.css">
     <link rel="stylesheet" href="./../styles/account-scr.css">
 </head>
 
@@ -54,10 +55,10 @@
     <footer>
         <div class="navbar justify-content-evenly fixed-bottom py-3">
             <div class="container text-center">
-                <i class="material-icons md-48 current-icon-color">home</i>
-                <i class="material-icons md-36 other-icon-color">calendar_today</i>
-                <i class="material-icons md-36 other-icon-color">medication</i>
-                <i class="material-icons md-36 other-icon-color">account_circle</i>
+                <button onclick="document.location='home.html'" class="material-icons md-48 other-icon-color">home</button>
+                <button onclick="document.location='notificationscr.html'" class="material-icons md-36 other-icon-color">calendar_today</button>
+                <button onclick="document.location='pills_list.html'" class="material-icons md-36 other-icon-color">medication</button>
+                <button onclick="document.location='account-scr.html'" class="material-icons md-36 current-icon-color">account_circle</button>
             </div>
         </div>
     </footer>
