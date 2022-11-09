@@ -20,4 +20,4 @@ const { auth, initializeApp } = window.firebase;
 //--------------------------------------------
 initializeApp(firebaseConfig);
 const authClient = auth();
-window.authClient = authClient
+window.authClient = authClient;
