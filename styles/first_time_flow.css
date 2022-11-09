@@ -89,3 +89,12 @@ button:disabled {
   border: 2px solid #b1d0e0;
   color: #a4a4a4;
 }
+
+.cancelButton {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.cancelButton:hover {
+  color: darkgrey;
+}
