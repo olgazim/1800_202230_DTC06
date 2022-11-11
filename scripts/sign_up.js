@@ -61,14 +61,14 @@ const onSubmit = async (event) => {
 
       console.log('Auth data:', authData);
       // Actions when user is created (e.g. redirect to dashboard)
-      window.alert('You will be redirected to dashboard page');
+      window.alert('Congratulations!\n You\'ve successfully created account in MediTrack.');
       window.location.href = "home.html";
     } catch (error) {
       // Actions when user creation failed (e.g. redirect to login page)
       // Check if user already exists
       if (error.code === 'auth/email-already-in-use') {
         // Redirect to login page
-        window.alert('Congratulations!\n You\'ve successfully created account in MediTrack.');
+        window.alert('Account with this email is already a member of MediTrack. Use your email and password to sign in.');
         window.location.href = "sign_in.html";
       }
 
