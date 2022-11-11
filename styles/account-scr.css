@@ -67,7 +67,8 @@
 }
 
 #userName,
-#email {
+#email,
+#profileName {
 
     padding: 24px 32px;
     border-left: none;
