@@ -1,12 +1,23 @@
-import {
-    getMedicationList
-  } from "./fb-medication-collection.js";
-  
-  export async function fillmedicationlist() {
-    var medications = await getMedicationList();
-  
-    medications.forEach((fbDoc) => {
-      const doc = fbDoc.data();
+function getLoggedUser(){
+  firebase.auth().onAuthStateChanged(user =>{
+      if (user){
+         console.log(`user logged in with email [${user.email}], id [${user.uid}]`);   
+         fillmedicationlist(user.uid);       
+     }
+     else{
+         alert("no logged in user")
+     }    
+  })
+}
+
+function fillmedicationlist(userId) {
+  db.collection("medications")
+  .where("userId", "==", userId)
+  .get()
+  .then(allMeds => {
+    allMeds.forEach(docRef => {
+      const doc = docRef.data();
+      
       $("div#pillsList").append(
         `<div class="Pills">
         <div class="PillName"><b>${doc.name}</b></div>
@@ -19,9 +30,12 @@ import {
           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
         </svg></button>
         <br>
-        <div class="PillDosage">Dosage: ${doc.dosage}</div>`
+        <div class="PillDosage">Dosage: ${doc.dosage}</div>
+        <br><br>
+        <div class="PillDescription">Description: ${doc.description}</div>`
       );
-    });
-  }
-  
-  window.addEventListener("load", fillmedicationlist);
+    })
+ });
+}
+
+getLoggedUser();
