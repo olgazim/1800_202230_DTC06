@@ -5,7 +5,7 @@ function fillWeeklyCalendarHeader() {
         const date = datesThisWeek[i];
         const currentElement = document.getElementById("day_" + i);
         if (date == todaysDate) {
-            currentElement.classList.add("bg-primary");
+            // currentElement.classList.add("bg-primary");
             currentElement.classList.add("active_day");
         }
         currentElement.innerHTML = date;

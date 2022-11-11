@@ -44,15 +44,15 @@
                 <img src="./../images/image.jpg" height="36" />
                 <span id="appName"> MediTrack </span>
             </a>
-            <button type="button" class="btn" id="editBtn" onclick = "editUserInfo()">Edit</button>
-            <button type="button" class="btn" id="saveBtn" onclick = "saveUserInfo()" hidden>Save</button>
+            <button type="button" class="btn" id="editBtn" onclick="editUserInfo()">Edit</button>
+            <button type="button" class="btn" id="saveBtn" onclick="saveUserInfo()" hidden>Save</button>
             <!-- <span class="material-icons"> add_circle_outline </span> -->
         </div>
     </nav>
     <!-- Body -->
-    <div class = "container-fluid">
-         <form>
-            <fieldset id = "userInfo" disabled>
+    <div class="container-fluid">
+        <form>
+            <fieldset id="userInfo" disabled>
                 <!-- A C C O U N T   P I C T U R E -->
                 <div class="form-group mb-4 w100">
                     <div class="d-flex justify-content-start">
@@ -75,15 +75,22 @@
                     <div class="invalid-feedback">Enter valid email</div>
                 </div>
             </fieldset>
-         </form>
-    </div>
-   
-    <h4 id="profile-label"> Profiles </h4>
-    <div class="card-buttons">
-        + Add profile
+        </form>
+        <!--   PROFILE   -->
+        <h4 id="profile-label"> Profiles </h4>
+        <div class="form-group">
+            <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
+            <div class="invalid-feedback">Please choose a username.</div>
+        </div>
+        <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()"> Add Profile Name </button>
+        <div class="card-buttons">
+            + Add profile
+        </div>
+
+        <button id="sign-out" class="btn-outline-primary sign-out">Sign Out</button>
     </div>
 
-    <button type="button" class="btn btn-outline-primary sign-out" id="sign-out">Sign Out</button>
+
 
     <!-- Bottom Navbar -->
     <footer>
@@ -100,7 +107,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->

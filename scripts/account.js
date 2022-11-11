@@ -75,8 +75,8 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-  userName = document.getElementById("userName").value;
-  email = document.getElementById("email").value;
+  var userName = document.getElementById("userName").value;
+  var email = document.getElementById("email").value;
   currentUser.update({
     name: userName,
     email: email

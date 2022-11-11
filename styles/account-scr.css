@@ -31,11 +31,20 @@
     padding-left: 10px;
 }
 
-.btn.btn-outline-primary.sign-out {
+.btn-outline-primary.sign-out {
+    display: block;
+    margin: 0 auto;
     font-size: 25px;
-    margin-left: 30%;
     width: 30%;
     border-radius: 20px;
+    border: none;
+    padding: 2%;
+    background-color: #406882;
+    color: white;
+}
+
+.btn-outline-primary.sign-out:hover {
+    color: lightgrey;
 }
 
 .form-control {
@@ -58,7 +67,8 @@
 }
 
 #userName,
-#email {
+#email,
+#profileName {
 
     padding: 24px 32px;
     border-left: none;
