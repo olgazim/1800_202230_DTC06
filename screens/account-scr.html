@@ -74,14 +74,15 @@
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,10}$" required />
                     <div class="invalid-feedback">Enter valid email</div>
                 </div>
-                <!--   PROFILE   -->
-                <div class="form-group">
-                    <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
-                    <div class="invalid-feedback">Please choose a profile name.</div>
-                </div>
             </fieldset>
         </form>
+        <!--   PROFILE   -->
         <h4 id="profile-label"> Profiles </h4>
+        <div class="form-group">
+            <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
+            <div class="invalid-feedback">Please choose a username.</div>
+        </div>
+        <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()"> Add Profile Name </button>
         <div class="card-buttons">
             + Add profile
         </div>
