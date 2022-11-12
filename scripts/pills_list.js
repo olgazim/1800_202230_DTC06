@@ -11,8 +11,9 @@ function getLoggedUser(){
 }
 
 function fillmedicationlist(userId) {
-  db.collection("medications")
-  .where("userId", "==", userId)
+  db.collection("users").doc(userId).collection("medications")
+  // db.collection("medications")
+  // .where("userId", "==", userId)
   .get()
   .then(allMeds => {
     allMeds.forEach(docRef => {

@@ -17,8 +17,7 @@ function addMed() {
     const dosage = document.getElementById("medDosage").value;
     const descr = document.getElementById("medDescr").value;
 
-    db.collection("medications").add({
-        userId: userId,
+    db.collection("users").doc(userId).collection("medications").add({
         name: name,
         dosage: dosage,
         description: descr
