@@ -33,22 +33,6 @@ svg {
   margin-top: 50px;
 }
 
-footer {
-  background-color: #1a374d;
-}
-
-i.current-icon-color {
-  color: white;
-}
-
-i.other-icon-color {
-  color: #406882;
-}
-
-.navbar {
-  background-color: #1a374d;
-}
-
 .cancelButton {
   text-decoration: none;
   color: aliceblue;
@@ -66,3 +50,34 @@ a.dropdown-toggle.show {
 a.dropdown-toggle:hover {
   background-color: rgb(57, 88, 109);
 }
+
+.frequencyButtons {
+  margin-top: 2%;
+  margin-left: 30%;
+  width: 15%;
+}
+
+.checkboxDays {
+  margin-top: 2%;
+  margin-left: 30%;
+  width: 15%;
+}
+
+
+footer {
+  background-color: #1a374d;
+}
+
+i.current-icon-color {
+  color: white;
+}
+
+i.other-icon-color {
+  color: #406882;
+}
+
+.navbar {
+  background-color: #1a374d;
+}
+
+
