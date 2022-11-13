@@ -57,10 +57,14 @@ a.dropdown-toggle:hover {
   width: 15%;
 }
 
-.checkboxDays {
+#checkboxDays {
   margin-top: 2%;
   margin-left: 30%;
   width: 15%;
+}
+
+.hidden.active {
+  display: block;
 }
 
 
