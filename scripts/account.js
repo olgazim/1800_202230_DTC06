@@ -82,7 +82,7 @@ function saveUserInfo() {
     email: email
   }).then(
     () => {
-      console.log("user document successfully updated")
+      console.log("user document successfully updated");
     }
   )
   document.getElementById("saveBtn").setAttribute("hidden", true);

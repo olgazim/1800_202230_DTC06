@@ -1,8 +1,8 @@
 "use strict";
 
-/*
- * Get DOM nodes <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * */
+//----------------------------------------
+//  Get DOM nodes
+//----------------------------------------
 
 const errorMessageContainer = document.getElementById("error-message");
 const form = document.getElementById("sign-up-form");
@@ -10,17 +10,17 @@ const inputPassword = document.getElementById("password");
 const inputPasswordConfirm = document.getElementById("password-confirm");
 const inputShowPassword = document.getElementById("show-password");
 
-/*
- * Firebase actions <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * */
+//----------------------------------------
+//  Firebase actions
+//----------------------------------------
 
 const signUp = async (email, password) => {
   return authClient.createUserWithEmailAndPassword(email, password);
 };
 
-/*
- * Event listeners <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * */
+///----------------------------------------
+//  Event listeners
+//----------------------------------------
 
 const togglePasswordVisibility = (event) => {
   const checked = event.target.checked;
@@ -99,10 +99,9 @@ const onSubmit = async (event) => {
   }
 };
 
-/*
- * Add event listeners <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * */
-
+//----------------------------------------
+//  Add event listeners
+//----------------------------------------
 // Listen to form's onSubmit event to validate the form
 form.addEventListener("submit", onSubmit, false);
 
