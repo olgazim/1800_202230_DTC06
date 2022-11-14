@@ -63,10 +63,6 @@ a.dropdown-toggle:hover {
   width: 15%;
 }
 
-.hidden.active {
-  display: block;
-}
-
 
 footer {
   background-color: #1a374d;
