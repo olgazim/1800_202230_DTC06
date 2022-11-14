@@ -12,7 +12,9 @@ function getLoggedUser(){
      })
 }
 
-function addMed() {    
+$('form#newmed').submit(function(e) {
+    e.preventDefault();    
+  
     const name = document.getElementById("medName").value;
     const dosage = document.getElementById("medDosage").value;
     const descr = document.getElementById("medDescr").value;
@@ -28,7 +30,7 @@ function addMed() {
     })
     .catch(error => {
         console.error("Error adding document: ", error);
-    });
-}
+    })
+});
 
 getLoggedUser();
