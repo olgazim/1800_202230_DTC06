@@ -112,13 +112,19 @@ inputPasswordConfirm.addEventListener("keyup", onPasswordChange, false);
 // Listen to "onChange" event of the checkbox input to show/hide password
 inputShowPassword.addEventListener("change", togglePasswordVisibility, false);
 
-function displayUploadedPhoto() {
-  const photoInput = document.getElementById("avatar-upload");
-  const photo = document.getElementById("avatar-photo]");
+function showUploadedPicture(){
+    const fileInput = document.getElementById("avatar_upload");   // pointer #1
+    const image = document.getElementById("avatar_photo");   // pointer #2
 
-  photoInput.addEventListener('change', function (e) {
-    var blob = URL.createObjectURL(e.target.filed[0]);
-    photo.src = blob;
-  })
+    //attach listener to input file
+    //when this file changes, do something
+    fileInput.addEventListener('change', function(e){
+
+        //the change event returns a file "e.target.files[0]"
+        var blob = URL.createObjectURL(e.target.files[0]);
+
+        //change the DOM img element source to point to this file
+        image.src = blob;    //assign the "src" property of the "img" tag
+    })
 }
-displayUploadedPhoto();
+showUploadedPicture();
