@@ -111,3 +111,14 @@ inputPasswordConfirm.addEventListener("keyup", onPasswordChange, false);
 
 // Listen to "onChange" event of the checkbox input to show/hide password
 inputShowPassword.addEventListener("change", togglePasswordVisibility, false);
+
+function displayUploadedPhoto() {
+  const photoInput = document.getElementById("avatar-upload");
+  const photo = document.getElementById("avatar-photo]");
+
+  photoInput.addEventListener('change', function (e) {
+    var blob = URL.createObjectURL(e.target.filed[0]);
+    photo.src = blob;
+  })
+}
+displayUploadedPhoto();

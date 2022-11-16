@@ -25,7 +25,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
     <!-- Other libraries go here -->
     <!-- Google Icons (Material Design)-->
@@ -54,12 +53,12 @@
         <form>
             <fieldset id="userInfo" disabled>
                 <!-- A C C O U N T   P I C T U R E -->
-                <div class="form-group mb-4 w100">
+                <div class="form-group">
                     <div class="d-flex justify-content-start">
-                        <input type="file" name="file" id="avatar_upload" class="avatar">
+                        <input type="file" name="file" id="avatar_upload" class="avatar" accept="image/*">
                         <label for="avatar_upload" class="flex-column d-flex avatar-wrapper align-items-center">
-                            <div class="material-icons profile">account_circle</div>
-                            <span class="material-icons edit add-avatar">edit</span>
+                            <img src="../images/avatar.jpg" class="rounded-circle justify-content-center" alt="Avatar" />
+                            <span class="add-avatar"> Edit</span>
                         </label>
                     </div>
                 </div>

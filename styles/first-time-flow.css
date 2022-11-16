@@ -59,6 +59,10 @@ body {
   position: relative;
 }
 
+.avatar-wrapper:hover {
+  cursor: pointer;
+}
+
 .add-avatar {
   color: #1a374d;
   position: absolute;

@@ -83,6 +83,12 @@ function saveUserInfo() {
   }).then(
     () => {
       console.log("user document successfully updated");
+
+      // firebase.auth().currentUser.updateEmail(email).then(() => {
+      //   console.log("email is updated in Firebase")
+      // }).catch((error) => {
+      //   console.log("error during email update")
+      // })
     }
   )
   document.getElementById("saveBtn").setAttribute("hidden", true);

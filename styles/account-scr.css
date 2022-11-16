@@ -47,6 +47,15 @@
     color: lightgrey;
 }
 
+.form-group  img{
+    height: 150px;
+    padding: 10px;
+}
+
+.form-group img:hover {
+    cursor: pointer;
+}
+
 .form-control {
     background-color: #f8f9fa;
     /* padding: 20px; */
@@ -80,6 +89,11 @@
 
 #avatar_upload {
     display: none;
+}
+
+
+.avatar-container {
+    height: 50px;
 }
 
 .avatar-wrapper {
