@@ -70,7 +70,7 @@ const onSubmit = async (event) => {
         .then(function () {
           console.log("New user added to database");
           window.alert(
-            "Congratulations!\n You've successfully created account in MediTrack."
+            "Congratulations!\n You've successfully created an account in MediTrack."
           );
           window.location.href = "home.html";
         });
@@ -112,19 +112,18 @@ inputPasswordConfirm.addEventListener("keyup", onPasswordChange, false);
 // Listen to "onChange" event of the checkbox input to show/hide password
 inputShowPassword.addEventListener("change", togglePasswordVisibility, false);
 
-function showUploadedPicture(){
-    const fileInput = document.getElementById("avatar_upload");   // pointer #1
-    const image = document.getElementById("avatar_photo");   // pointer #2
+function showUploadedPicture() {
+  const fileInput = document.getElementById("avatar_upload"); // pointer #1
+  const image = document.getElementById("avatar_photo"); // pointer #2
 
-    //attach listener to input file
-    //when this file changes, do something
-    fileInput.addEventListener('change', function(e){
+  //attach listener to input file
+  //when this file changes, do something
+  fileInput.addEventListener("change", function (e) {
+    //the change event returns a file "e.target.files[0]"
+    var blob = URL.createObjectURL(e.target.files[0]);
 
-        //the change event returns a file "e.target.files[0]"
-        var blob = URL.createObjectURL(e.target.files[0]);
-
-        //change the DOM img element source to point to this file
-        image.src = blob;    //assign the "src" property of the "img" tag
-    })
+    //change the DOM img element source to point to this file
+    image.src = blob; //assign the "src" property of the "img" tag
+  });
 }
 showUploadedPicture();
