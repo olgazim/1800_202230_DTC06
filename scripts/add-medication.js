@@ -30,8 +30,8 @@ $("form#newmed").submit(function (e) {
     })
     .then((docRef) => {
       console.log(`New medication document added with ID: [${docRef.id}]`);
-      window.location.assign("pills_list.html");
       window.alert("New medication added to your list!");
+      window.location.assign("pills-list.html");
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
