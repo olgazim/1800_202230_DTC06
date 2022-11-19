@@ -44,12 +44,7 @@ function getNotificationsList() {
           .doc(medicationId)
           .collection('notifications')
           .get()
-          // .add({
-          //   dosage: '200mg',
-          //   profile: '',
-          //   dateTime: firebase.firestore.Timestamp.fromDate(new Date()),
-          //   createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
-          // })
+      
       });
 
       Promise.all(notificationCollections)

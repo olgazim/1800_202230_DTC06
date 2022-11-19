@@ -106,6 +106,10 @@
     bottom: 0;
 }
 
+.avatar-label-hide {
+    display: none;
+}
+
 #editBtn {
     background: none;
     outline: none;

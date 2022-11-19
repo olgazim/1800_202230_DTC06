@@ -1,4 +1,3 @@
-
 'use strict';
 
 var currentUser;
@@ -18,6 +17,7 @@ const inputProfile = document.getElementById('profileName');
 const listProfile = document.getElementById('profile-list');
 const fieldSetUserInfo = document.getElementById('userInfo');
 const fieldSetUserProfiles = document.getElementById('user-profiles');
+const avatarEditLabel = document.getElementById('avatar-edit-label');
 
 // Firebase actions
 
@@ -25,7 +25,25 @@ const signOut = () => {
   return authClient.signOut();
 };
 
-
+const removeProfile = (profileName) => () => {
+  if (profileName) {
+    currentUser.update({
+      profiles: firebase.firestore.FieldValue.arrayRemove(profileName),
+    })
+      .then((response) => {
+        console.log(`[removeProfile] success: profile "${profileName}" has been added`, response);
+        // clear input state
+        inputProfile.value = '';
+      })
+      .catch((error) => {
+        console.error('[removeProfile] error:', error);
+      })
+      .finally(() => {
+        // update profile list
+        populateInfo();
+      });
+  }
+};
 
 //----------------------------------------
 //  Helpers
@@ -46,6 +64,7 @@ const enterEditMode = () => {
   fieldSetUserInfo.disabled = false;
   fieldSetUserProfiles.disabled = false;
 
+  avatarEditLabel.classList.remove('avatar-label-hide');
   buttonSave.removeAttribute('hidden');
   buttonEdit.setAttribute('hidden', '');
 };
@@ -54,6 +73,7 @@ const exitEditMode = () => {
   fieldSetUserInfo.disabled = true;
   fieldSetUserProfiles.disabled = true;
 
+  avatarEditLabel.classList.add('avatar-label-hide');
   buttonSave.setAttribute('hidden', '');
   buttonEdit.removeAttribute('hidden');
 };
@@ -244,20 +264,27 @@ async function saveUserInfo() {
   exitEditMode();
 }
 
-
 function addProfile() {
-  const profile = document.getElementById("profileName").value;
-
-  currentUser.collection("profiles").add({
-    name: profile
-  })
-
-    .then(docRef => {
-    console.log('New profile name has been added')
+  if (inputProfile.value) {
+    currentUser.update({
+      profiles: firebase.firestore.FieldValue.arrayUnion(inputProfile.value),
     })
-
-    .catch(error => {
-    console.error("Error adding profile name: ", error)
-  })
-  
+      .then((response) => {
+        console.log('[addProfile] success: New profile name has been added', response);
+        // clear input state
+        inputProfile.value = '';
+      })
+      .catch((error) => {
+        console.error('[addProfile] error:', error);
+      })
+      .finally(() => {
+        // update profile list
+        populateInfo();
+      });
+  }
 }
+
+db
+  .collection('users')
+  .doc(user.uid)
+.then()
