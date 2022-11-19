@@ -57,7 +57,8 @@
                     <div class="d-flex justify-content-start">
                         <input type="file" name="file" id="avatar_upload" class="avatar" accept="image/*">
                         <label for="avatar_upload" class="flex-column d-flex avatar-wrapper align-items-center">
-                            <img src="../images/avatar.jpg" class="rounded-circle justify-content-center" alt="Avatar" />
+                            <img id="avatar-image" src="../images/avatar.jpg"
+                                class="rounded-circle justify-content-center" alt="Avatar" />
                             <span class="add-avatar"> Edit</span>
                         </label>
                     </div>
@@ -76,13 +77,15 @@
             </fieldset>
         </form>
         <!--   PROFILE   -->
-        <h4 id="profile-label"> Profiles </h4>
-        <div class="form-group">
-            <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
-            <div class="invalid-feedback">Please choose a username.</div>
-        </div>
-        <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()"> Add Profile Name </button>
-        
+        <fieldset id="user-profiles" disabled>
+            <h4 id="profile-label"> Profiles </h4>
+            <ul id="profile-list"></ul>
+            <div class="form-group">
+                <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+            <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()"> Add Profile Name </button>
+        </fieldset>
 
         <button id="sign-out" class="btn-outline-primary sign-out">Sign Out</button>
     </div>

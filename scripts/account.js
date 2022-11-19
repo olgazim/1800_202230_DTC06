@@ -2,6 +2,7 @@
 'use strict';
 
 var currentUser;
+// var currentUserAuth = authClient.user
 
 //----------------------------------------
 //  Get DOM nodes
@@ -30,6 +31,16 @@ const signOut = () => {
 //  Helpers
 //----------------------------------------
 
+const convertToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+  });
+};
 
 const enterEditMode = () => {
   fieldSetUserInfo.disabled = false;
@@ -47,7 +58,26 @@ const exitEditMode = () => {
   buttonEdit.removeAttribute('hidden');
 };
 
+const updateProfileList = (profileList) => {
+  listProfile.innerHTML = null;
 
+  if (Array.isArray(profileList)) {
+    profileList.forEach((item) => {
+      const listElement = document.createElement('li');
+      const textSpan = document.createElement('span');
+      const button = document.createElement('button');
+
+      listElement.classList.add('profile-list-item');
+      button.classList.add('remove-profile-button');
+      button.innerText = 'X';
+      button.addEventListener('click', removeProfile(item), false);
+
+      textSpan.innerText = item;
+      listElement.append(textSpan, button);
+      listProfile.appendChild(listElement);
+    });
+  }
+};
 
 //----------------------------------------
 //  Event listeners
@@ -64,12 +94,45 @@ const onSignOut = async () => {
   }
 };
 
+const onImageUpdate = async (event) => {
+  try {
+    const file = event.target.files[0];
+    const base64String = await convertToBase64(file);
+    const user = window.authClient.currentUser;
 
+    if (user) {
+      db
+        .collection('users')
+        .doc(user.uid)
+        .set(
+          { ['account-photo']: base64String },
+          { merge: true },
+        )
+        .then((response) => {
+          // the response is undefined
+          console.log('[onImageUpdate] success:', response);
+        })
+        .catch((error) => {
+          console.log('[onImageUpdate] error:', error);
+        })
+        .finally(() => {
+          // update form
+          populateInfo();
+        });
+    }
+  } catch (error) {
+    console.log('[onImageUpdate] error:', error);
+  } finally {
+    // hide "save" button by showing "edit" button
+    exitEditMode();
+  }
+};
 
 //----------------------------------------
 //  Add event listeners
 //----------------------------------------
 buttonSignOut.addEventListener('click', onSignOut, false);
+inputImage.addEventListener('change', onImageUpdate, false);
 document.addEventListener('DOMContentLoaded', populateInfo);
 
 function populateInfo() {
@@ -81,6 +144,7 @@ function populateInfo() {
         const userName = userDoc.data().name;
         const email = userDoc.data().email;
         const profiles = userDoc.data().profiles;
+        const avatar = userDoc.data()['account-photo'];
 
         console.log('!!!!', userDoc.data());
         // if the data fields are not empty , then enrich form with the data

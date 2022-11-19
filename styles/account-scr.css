@@ -128,3 +128,13 @@ i.current-icon-color {
 i.other-icon-color {
     color: #406882;
 }
+
+.remove-profile-button {
+    border: 0;
+    border-radius: 4px;
+    margin-left: 1rem;
+}
+
+.profile-list-item {
+    padding: 0.2rem;
+}
