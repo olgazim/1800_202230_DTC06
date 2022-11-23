@@ -80,4 +80,14 @@ i.other-icon-color {
   background-color: #1a374d;
 }
 
-
+#add-notificaiton {
+  margin-top: 2%;
+  margin-left: 40%;
+  border-radius: 10px;
+  padding: 2%;
+  width: 20%;
+  color: white;
+  text-align: center;
+  border: none;
+  background-color: #406882;
+}
