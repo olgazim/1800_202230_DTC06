@@ -93,7 +93,7 @@ function validateNotificationParams(params) {
 }
 
 function addNotification() {
-    console.log("add notification");
+  console.log("add notification");
   const date = inputDate.value;
   const time = inputTime.value;
   const dateTime = firebase.firestore.Timestamp.fromDate(new Date(`${date}T${time}`));
