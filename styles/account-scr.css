@@ -142,3 +142,7 @@ i.other-icon-color {
 .profile-list-item {
     padding: 0.2rem;
 }
+
+#sign-out {
+    margin-bottom: 3em;
+}
