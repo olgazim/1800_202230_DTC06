@@ -34,6 +34,7 @@ function displayMedicationDescription(userId, medId) {
       document.getElementById("medName").value = doc.name;
       document.getElementById("medDosage").value = doc.dosage;
       document.getElementById("medDescr").value = doc.description;
+      document.getElementById("medExpDate").value = doc.expiration;
     });
 }
 
@@ -43,6 +44,7 @@ function updateMed(e) {
   const name = document.getElementById("medName").value;
   const dosage = document.getElementById("medDosage").value;
   const descr = document.getElementById("medDescr").value;
+  const expiration = document.getElementById("medExpDate").value;
 
   db.collection("users")
     .doc(currentUserId)
@@ -52,6 +54,7 @@ function updateMed(e) {
       name: name,
       dosage: dosage,
       description: descr,
+      expiration: expiration,
     })
     .then(() => {
       console.log("Document successfully written!");

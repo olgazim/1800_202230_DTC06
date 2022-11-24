@@ -19,6 +19,7 @@ $("form#newmed").submit(function (e) {
   const name = document.getElementById("medName").value;
   const dosage = document.getElementById("medDosage").value;
   const descr = document.getElementById("medDescr").value;
+  const expiration = document.getElementById("medExpDate").value;
 
   db.collection("users")
     .doc(userId)
@@ -27,6 +28,7 @@ $("form#newmed").submit(function (e) {
       name: name,
       dosage: dosage,
       description: descr,
+      expiration: expiration,
     })
     .then((docRef) => {
       console.log(`New medication document added with ID: [${docRef.id}]`);
