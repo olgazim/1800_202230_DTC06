@@ -10,6 +10,7 @@
 .backgroundcolor {
   background-color: #1a374d;
 }
+
 a {
   color: white;
 }
@@ -26,6 +27,14 @@ a {
   padding-right: 5%;
   box-shadow: 0px 5px gray;
   margin-bottom: 15px;
+}
+
+.med-expiring {
+  border: 2px solid yellow;
+}
+
+.med-expired {
+  border: 2px solid red;
 }
 
 .PillName {
