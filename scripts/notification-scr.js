@@ -1,3 +1,4 @@
+//full month calendar date picker
 var months = [
   'January',
   'February',
