@@ -50,6 +50,7 @@
 .form-group  img{
     height: 150px;
     padding: 10px;
+    /* margin-top: 20px; */
 }
 
 .form-group img:hover {
@@ -73,6 +74,10 @@
 
 .container-fluid {
     padding: 0;
+}
+
+#userName {
+    margin-top: 20px;
 }
 
 #userName,
@@ -101,9 +106,13 @@
 }
 
 .add-avatar {
-    color: #1a374d;
+    color: white;
     position: absolute;
     bottom: 0;
+    background: #1a374d;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50%;
 }
 
 .avatar-label-hide {
