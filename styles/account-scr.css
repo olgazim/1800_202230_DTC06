@@ -2,6 +2,10 @@
     background-color: #1a374d;
 }
 
+.navbar-brand {
+    margin-left: 20px;
+}
+
 #appName {
     color: white;
 }
@@ -124,6 +128,7 @@
     outline: none;
     color: #ffffff;
     font-size: 1.2em;
+    margin-right: 20px;
 }
 
 #saveBtn {
@@ -131,7 +136,7 @@
     outline: none;
     color: #ffffff;
     font-size: 1.2em;
-    /* display: none; */
+    margin-right: 20px;
 }
 
 i.current-icon-color {
@@ -150,6 +155,10 @@ i.other-icon-color {
 
 .profile-list-item {
     padding: 0.2rem;
+}
+
+#addProfile {
+    margin-left: 20px;
 }
 
 #sign-out {

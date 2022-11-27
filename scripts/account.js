@@ -9,6 +9,7 @@ var currentUser;
 const buttonSignOut = document.getElementById('sign-out');
 const buttonSave = document.getElementById('saveBtn');
 const buttonEdit = document.getElementById('editBtn');
+const buttonAddProfile = document.getElementById('addProfile');
 const avatarContainer = document.getElementById('avatar-image');
 const inputImage = document.getElementById('avatar_upload');
 const inputName = document.getElementById('userName');
@@ -67,6 +68,7 @@ const enterEditMode = () => {
   avatarEditLabel.classList.remove('avatar-label-hide');
   buttonSave.removeAttribute('hidden');
   buttonEdit.setAttribute('hidden', '');
+  buttonAddProfile.removeAttribute('hidden');
 };
 
 const exitEditMode = () => {
@@ -76,6 +78,7 @@ const exitEditMode = () => {
   avatarEditLabel.classList.add('avatar-label-hide');
   buttonSave.setAttribute('hidden', '');
   buttonEdit.removeAttribute('hidden');
+  buttonAddProfile.setAttribute('hidden', '');
 };
 
 const updateProfileList = (profileList) => {
