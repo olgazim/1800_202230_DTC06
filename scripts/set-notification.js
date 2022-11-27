@@ -3,17 +3,19 @@ let currentUserId;
 const inputDate = document.getElementById("StartDate");
 const inputTime = document.getElementById("StartTime");
 const inputOption = document.getElementById("medication-options");
+const inputDosage = document.getElementById('medication-dosage');
+const buttonSubmit = document.getElementById('add-notification');
 
-inputDate.addEventListener("change", onDateChange);
-inputTime.addEventListener("change", onTimeChange);
+// inputDate.addEventListener("change", onDateChange);
+// inputTime.addEventListener("change", onTimeChange);
 
-function onDateChange(event) {
-  console.log("DATE:", event.target.value, inputOption.value);
-}
+// function onDateChange(event) {
+//   console.log("DATE:", event.target.value, inputOption.value);
+// }
 
-function onTimeChange(event) {
-  console.log("TIME:", event.target.value);
-}
+// function onTimeChange(event) {
+//   console.log("TIME:", event.target.value);
+// }
 
 function hideCheckbox() {
   $("#checkboxDays").hide();
@@ -29,6 +31,18 @@ function setup() {
 
   $("#form-check-input-selectDays").on("click", showCheckbox);
   $("#form-check-input-everyDay").on("click", hideCheckbox);
+  
+  if (getUrlParam('notificationId')) {
+    // edit flow
+    buttonSubmit.innerText = 'Edit notification';
+
+    if (currentUserId) {
+      fillValues(currentUserId);
+    }
+  } else {
+    // add flow
+    inputOption.disabled = false;
+  }
 }
 
 function getLoggedUser() {
@@ -39,6 +53,7 @@ function getLoggedUser() {
       );
       currentUserId = user.uid;
       fillMedicationList(currentUserId);
+      fillValues(currentUserId);
     } else {
       alert("no logged in user");
     }
@@ -62,71 +77,116 @@ function getUrlParam(param) {
   return searchParams.get(param);
 }
 
+function fillValues(userId) {
+  const medicationId = getUrlParam('medicationId');
+  const notificationId = getUrlParam('notificationId');
+
+  if (medicationId && notificationId) {
+    db
+      .collection('users')
+      .doc(userId)
+      .collection('medications')
+      .doc(medicationId)
+      .collection('notifications')
+      .doc(notificationId)
+      .get()
+      .then((response) => {
+        const data = response.data();
+        const date = data.dateTime.toDate();
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+
+        inputDosage.value = data.dosage;
+        inputDate.value = `${year}-${month}-${day}`;
+        inputTime.value = `${hours}:${minutes}`;
+      })
+      .catch((error) => {
+        console.log('[fillValues] error:', error);
+      });
+  }
+}
+
 function fillMedicationList(userId) {
-  db.collection("users")
+  db
+    .collection('users')
     .doc(userId)
-    .collection("medications")
+    .collection('medications')
     .get()
     .then((allMeds) => {
-      const medicationId = getUrlParam("medicationId");
-      console.log("MedicationId", medicationId);
-      $("#medication-options")
-        // .append(`
-        //   <option disabled selected value> -- select medicate -- </option>
-        // `)
+      const medicationId = getUrlParam('medicationId');
+
+      $('#medication-options')
         .change((event) => {
-          setUrlParam("medicationId", event.target.value);
+          setUrlParam('medicationId', event.target.value);
         });
 
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
-        $("#medication-options").append(`
-          <option ${medicationId === docRef.id ? "selected" : ""} value="${
-          docRef.id
-        }">${doc.name}</option>
+        $('#medication-options').append(`
+          <option ${medicationId === docRef.id ? 'selected' : ''} value="${docRef.id}">${doc.name}</option>
         `);
       });
     });
 }
 
-function validateNotificationParams(params) {
-  const { dateTime, dosage } = params;
-}
-
-function addNotification() {
-  console.log("add notification");
+function submitNotification() {
   const date = inputDate.value;
   const time = inputTime.value;
-  const dateTime = firebase.firestore.Timestamp.fromDate(
-    new Date(`${date}T${time}`)
-  );
+  const dosage = inputDosage.value;
+  const dateTime = firebase.firestore.Timestamp.fromDate(new Date(`${date}T${time}`));
   const medicationId = inputOption.value;
-  const notificationId = getUrlParam("notificationId");
+  const notificationId = getUrlParam('notificationId');
 
-  //   if (notificationId) {
-  //     // updateFlow
-  //   } else {
-  // add flow
-  db.collection("users")
+  if (!date || !time || !dosage || !medicationId) {
+    return;
+  }
+
+  const payload = {
+    dateTime,
+    dosage,
+    profile: '',
+  };
+  let result;
+
+  // Get notifications collection
+  const notificationsCollection = db
+    .collection('users')
     .doc(currentUserId)
-    .collection("medications")
+    .collection('medications')
     .doc(medicationId)
-    .collection("notifications")
-    .add({
-      dateTime,
-      dosage: "123mg",
-      profile: "",
-    })
+    .collection('notifications');
+
+  if (notificationId) {
+    // updateFlow
+    result = notificationsCollection
+      .doc(notificationId)
+      .set(payload);
+  } else {
+    // add flow
+    result = notificationsCollection
+      .add(payload);
+  }
+
+  result
     .then((response) => {
-      console.log("Added:", response);
-      window.alert("Notification is set!");
-      window.location.assign("notification-scr.html");
+      console.log('Success:', response);
+
+      if (confirm('Set another notification?')) {
+        inputDate.value = '';
+        inputDosage.value = '';
+        inputTime.value = '';
+      } else {
+        window.location = 'notification-scr.html';
+      }
     })
     .catch((error) => {
-      console.error("Error: ", error);
+      console.error('Error: ', error);
     });
-  //   }
 }
 
 getLoggedUser();
