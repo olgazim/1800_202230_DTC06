@@ -1,13 +1,26 @@
-ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+ul {
+  list-style-type: none;
+}
 
-* {box-sizing: border-box;}
-ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+body {
+  font-family: Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+}
 
 .active_day {
-    color: white !important;
-    background-color: #406882 !important;
+  color: white !important;
+  background-color: #406882 !important;
 }
 
 /* Month list */
@@ -27,7 +40,7 @@ body {font-family: Verdana, sans-serif;}
 .weekdays {
   margin: 0;
   padding: 10px 0;
-  background-color:#ddd;
+  background-color: #ddd;
 }
 
 .weekdays li {
@@ -50,13 +63,13 @@ body {font-family: Verdana, sans-serif;}
   width: 13.6%;
   text-align: center;
   margin-bottom: 5px;
-  font-size:12px;
+  font-size: 12px;
   color: #777;
 }
 
 /* Highlight the "current" day */
 /* .days li .active { */
-  /* padding: 5px; */
-  /* background: #1abc9c; */
-  /* color: white !important */
+/* padding: 5px; */
+/* background: #1abc9c; */
+/* color: white !important */
 /* } */

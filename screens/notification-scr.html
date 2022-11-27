@@ -31,7 +31,7 @@
   <link href="./../styles/pills-list.css" rel="stylesheet" />
 </head>
 
-<body onload="fillWeeklyCalendarHeader()">
+<body>
   <!-- Header -->
   <nav class="navbar navbar-expand-lg py-2">
     <div class="container-fluid">
@@ -42,49 +42,17 @@
       <!-- <span class="material-icons"> add_circle_outline </span> -->
     </div>
   </nav>
-  <ul class="weekdays">
-    <li>Sun</li>
-    <li>Mon</li>
-    <li>Tue</li>
-    <li>Wed</li>
-    <li>Thu</li>
-    <li>Fri</li>
-    <li>Sat</li>
-  </ul>
+  <!-- <ul class="weekdays">
+  <li>Sun</li>
+  <li>Mon</li>
+  <li>Tue</li>
+  <li>Wed</li>
+  <li>Thu</li>
+  <li>Fri</li>
+  <li>Sat</li>
+</ul> -->
 
-  <ul class="days">
-    <li id="day_0">1</li>
-    <li id="day_1">2</li>
-    <li id="day_2">3</li>
-    <li id="day_3">4</li>
-    <li id="day_4">5</li>
-    <li id="day_5">6</li>
-    <li id="day_6">7</li>
-    <li id="day_7">8</li>
-    <li id="day_8">9</li>
-    <li id="day_9">10</li>
-    <li id="day_10">11</li>
-    <li id="day_11">12</li>
-    <li id="day_12">13</li>
-    <li id="day_13">14</li>
-    <li id="day_14">15</li>
-    <li id="day_15">16</li>
-    <li id="day_16">17</li>
-    <li id="day_17">18</li>
-    <li id="day_18">19</li>
-    <li id="day_19">20</li>
-    <li id="day_20">21</li>
-    <li id="day_21">22</li>
-    <li id="day_22">23</li>
-    <li id="day_23">24</li>
-    <li id="day_24">25</li>
-    <li id="day_25">26</li>
-    <li id="day_26">27</li>
-    <li id="day_27">28</li>
-    <li id="day_28">29</li>
-    <li id="day_29">30</li>
-    <!-- <li>31</li> -->
-  </ul>
+  <ul class="days" id="days"></ul>
   <div id="notifications-title">
     <h4>Your Scheduled Notifications for:</h4>
     <h4 id="date"></h4>
@@ -92,7 +60,8 @@
   <div id="notification-list">
   </div>
 
-  <button id="setNotification" style="margin-bottom: 90px;" onclick="document.location='set-notification.html'">Set notification
+  <button id="setNotification" style="margin-bottom: 90px;" onclick="document.location='set-notification.html'">Set
+    notification
   </button>
 
   <!-- Bottom Navbar -->
