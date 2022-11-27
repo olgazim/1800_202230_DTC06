@@ -6,17 +6,6 @@ const inputOption = document.getElementById("medication-options");
 const inputDosage = document.getElementById('medication-dosage');
 const buttonSubmit = document.getElementById('add-notification');
 
-// inputDate.addEventListener("change", onDateChange);
-// inputTime.addEventListener("change", onTimeChange);
-
-// function onDateChange(event) {
-//   console.log("DATE:", event.target.value, inputOption.value);
-// }
-
-// function onTimeChange(event) {
-//   console.log("TIME:", event.target.value);
-// }
-
 function hideCheckbox() {
   $("#checkboxDays").hide();
 }
@@ -175,14 +164,17 @@ function submitNotification() {
   result
     .then((response) => {
       console.log('Success:', response);
-
-      if (confirm('Set another notification?')) {
-        inputDate.value = '';
-        inputDosage.value = '';
-        inputTime.value = '';
-      } else {
-        window.location = 'notification-scr.html';
-      }
+      window.alert(
+          "Notification is set"
+      );
+      window.location = 'notification-scr.html';
+      // if (confirm('Set another notification?')) {
+      //   inputDate.value = '';
+      //   inputDosage.value = '';
+      //   inputTime.value = '';
+      // } else {
+      //   window.location = 'notification-scr.html';
+      // }
     })
     .catch((error) => {
       console.error('Error: ', error);
