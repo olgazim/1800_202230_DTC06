@@ -23,7 +23,6 @@ function getNotificationsList() {
   firebase.auth().onAuthStateChanged(async user => {
     //Check if user is signed in
     if (user) {
-      const medicationsIds = [];
       const medications = [];
 
       await db
@@ -33,34 +32,32 @@ function getNotificationsList() {
         .get()
         .then((medSnapshot) => {
           medSnapshot.docs.forEach(doc => {
-            medicationsIds.push(doc.id);
             medications.push({
               id: doc.id,
               ...doc.data(),
             });
-            console.log(doc, doc.data())
-            console.log(true);
           });
         });
 
-      const notificationCollections = medicationsIds.map((medicationId) => {
+      const notificationCollections = medications.map((medication) => {
         return db
           .collection('users')
           .doc(user.uid)
           .collection('medications')
-          .doc(medicationId)
+          .doc(medication.id)
           .collection('notifications')
           .get();
-
       });
 
       Promise.all(notificationCollections)
         .then((response) => {
-          response.forEach((notificationCollection) => {
-            notificationCollection.docs.forEach((notification, index) => {
-              buildNotifications(notification.id, notification.data(), medications[index]);
+          response.forEach(((notificationCollection, index) => {
+            const medication = medications[index];
+
+            notificationCollection.docs.forEach((notification) => {
+              buildNotifications(notification.id, notification.data(), medication);
             });
-          });
+          }));
         })
         .catch((error) => {
           console.log('[getNotificationsList] error:', error);
@@ -117,16 +114,15 @@ function deleteNotification(notificationId, medicationId) {
           .collection('notifications')
           .doc(notificationId)
           .delete()
-          .then(response => {
-            // the response in undefined
-            console.log('[deleteNotification] success:', response);
+          .then(() => {
+            console.log('[deleteNotification] success');
+
+            window.location.reload();
           })
           .catch((error) => {
-            console.log('[deleteNotification] error', error);
+            console.error('[deleteNotification] error:', error);
+            window.alert(`[deleteNotification] error (see console output for more info): ${error?.message}`)
           })
-          .finally(() => {
-            window.location.reload();
-          });
       }
     });
   }
