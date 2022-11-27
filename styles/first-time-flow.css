@@ -63,10 +63,19 @@ body {
   cursor: pointer;
 }
 
-.add-avatar {
+/* .add-avatar {
   color: #1a374d;
   position: absolute;
   bottom: 0;
+} */
+.add-avatar {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  background: #1a374d;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50%;
 }
 
 h1 {
