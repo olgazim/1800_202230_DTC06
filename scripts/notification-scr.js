@@ -24,6 +24,7 @@ function getNotificationsList() {
     //Check if user is signed in
     if (user) {
       const medicationsIds = [];
+      const medications = [];
 
       await db
         .collection('users')
@@ -33,6 +34,12 @@ function getNotificationsList() {
         .then((medSnapshot) => {
           medSnapshot.docs.forEach(doc => {
             medicationsIds.push(doc.id);
+            medications.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+            console.log(doc, doc.data())
+            console.log(true);
           });
         });
 
@@ -51,7 +58,7 @@ function getNotificationsList() {
         .then((response) => {
           response.forEach((notificationCollection) => {
             notificationCollection.docs.forEach((notification, index) => {
-              buildNotifications(notification.id, notification.data(), medicationsIds[index]);
+              buildNotifications(notification.id, notification.data(), medications[index]);
             });
           });
         })
@@ -66,7 +73,7 @@ function getNotificationsList() {
   });
 }
 
-function buildNotifications(id, data, medicationId) {
+function buildNotifications(id, data, medication) {
   const [date, time] = data.dateTime.toDate().toLocaleString().split(',');
 
   $('#notification-list')
@@ -82,6 +89,7 @@ function buildNotifications(id, data, medicationId) {
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
               </svg></button>
         </div>
+        <div class="medication-name">Medication: ${medication.name}</div>
         <div class="notification-dosage">Dosage: ${data.dosage}</div>
         <div class="notification-date">Date: ${date}</div>
         <div class="notification-time">Time: ${time}</div>
@@ -89,11 +97,11 @@ function buildNotifications(id, data, medicationId) {
       </div>
     `);
   $(`#delete-btn-${id}`).click(() => {
-    deleteNotification(id, medicationId);
+    deleteNotification(id, medication.id);
   });
 
   $(`#edit-btn-${id}`).click(() => {
-    editNotification(id, medicationId);
+    editNotification(id, medication.id);
   });
 }
 
@@ -124,40 +132,8 @@ function deleteNotification(notificationId, medicationId) {
   }
 }
 
-// TODO: collect data from HTML
 function editNotification(notificationId, medicationId) {
-  // in progress
-  window.alert('Do not use from UI');
-  window.location.href=`set-notification.html?medicationId=${medicationId}&notificationId=${notificationId}`
-  return;
-
-  firebase.auth().onAuthStateChanged(async user => {
-    if (user) {
-      db
-        .collection('users')
-        .doc(user.uid)
-        .collection('medications')
-        .doc(medicationId)
-        .collection('notifications')
-        .doc(notificationId)
-        .set({
-          // pass data to edit current notification
-          dosage: '',
-          dateTime: '',
-          profile: '',
-        })
-        .then(response => {
-          // the response in undefined
-          console.log('[editNotification] success:', response);
-        })
-        .catch((error) => {
-          console.log('[editNotification] error', error);
-        })
-        .finally(() => {
-          window.location.reload();
-        });
-    }
-  });
+  window.location.href=`set-notification.html?medicationId=${medicationId}&notificationId=${notificationId}`;
 }
 
 getNotificationsList();
