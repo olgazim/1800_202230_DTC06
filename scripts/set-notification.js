@@ -3,13 +3,15 @@ let currentUserId;
 const inputDate = document.getElementById("StartDate");
 const inputTime = document.getElementById("StartTime");
 const inputOption = document.getElementById("medication-options");
-const inputDosage = document.getElementById('medication-dosage');
-const buttonSubmit = document.getElementById('add-notification');
+const inputDosage = document.getElementById("medication-dosage");
+const buttonSubmit = document.getElementById("add-notification");
 
+// function to hide checkboxes to select days
 function hideCheckbox() {
   $("#checkboxDays").hide();
 }
 
+// function to show checkboxes to select days
 function showCheckbox() {
   $("#checkboxDays").show();
 }
@@ -18,12 +20,12 @@ function setup() {
   var checkbox = document.getElementById("checkboxDays");
   checkbox.style.display = "none";
 
-  $("#form-check-input-selectDays").on("click", showCheckbox);
-  $("#form-check-input-everyDay").on("click", hideCheckbox);
-  
-  if (getUrlParam('notificationId')) {
+  $("#form-check-input-selectDays").on("click", showCheckbox); // show the checkbxes to select days when the user selects "Select days" radio button
+  $("#form-check-input-everyDay").on("click", hideCheckbox); // if the user selects "Every day" radio button, hide the checkboxes to select days
+
+  if (getUrlParam("notificationId")) {
     // edit flow
-    buttonSubmit.innerText = 'Edit notification';
+    buttonSubmit.innerText = "Edit notification";
 
     if (currentUserId) {
       fillValues(currentUserId);
@@ -67,57 +69,56 @@ function getUrlParam(param) {
 }
 
 function fillValues(userId) {
-  const medicationId = getUrlParam('medicationId');
-  const notificationId = getUrlParam('notificationId');
+  const medicationId = getUrlParam("medicationId");
+  const notificationId = getUrlParam("notificationId");
 
   if (medicationId && notificationId) {
-    db
-      .collection('users')
+    db.collection("users")
       .doc(userId)
-      .collection('medications')
+      .collection("medications")
       .doc(medicationId)
-      .collection('notifications')
+      .collection("notifications")
       .doc(notificationId)
       .get()
       .then((response) => {
         const data = response.data();
         const date = data.dateTime.toDate();
         const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date.getDate().toString().padStart(2, "0");
 
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const hours = date.getHours().toString().padStart(2, "0");
+        const minutes = date.getMinutes().toString().padStart(2, "0");
 
         inputDosage.value = data.dosage;
         inputDate.value = `${year}-${month}-${day}`;
         inputTime.value = `${hours}:${minutes}`;
       })
       .catch((error) => {
-        console.log('[fillValues] error:', error);
+        console.log("[fillValues] error:", error);
       });
   }
 }
 
 function fillMedicationList(userId) {
-  db
-    .collection('users')
+  db.collection("users")
     .doc(userId)
-    .collection('medications')
+    .collection("medications")
     .get()
     .then((allMeds) => {
-      const medicationId = getUrlParam('medicationId');
+      const medicationId = getUrlParam("medicationId");
 
-      $('#medication-options')
-        .change((event) => {
-          setUrlParam('medicationId', event.target.value);
-        });
+      $("#medication-options").change((event) => {
+        setUrlParam("medicationId", event.target.value);
+      });
 
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
-        $('#medication-options').append(`
-          <option ${medicationId === docRef.id ? 'selected' : ''} value="${docRef.id}">${doc.name}</option>
+        $("#medication-options").append(`
+          <option ${medicationId === docRef.id ? "selected" : ""} value="${
+          docRef.id
+        }">${doc.name}</option>
         `);
       });
     });
@@ -127,9 +128,11 @@ function submitNotification() {
   const date = inputDate.value;
   const time = inputTime.value;
   const dosage = inputDosage.value;
-  const dateTime = firebase.firestore.Timestamp.fromDate(new Date(`${date}T${time}`));
+  const dateTime = firebase.firestore.Timestamp.fromDate(
+    new Date(`${date}T${time}`)
+  );
   const medicationId = inputOption.value;
-  const notificationId = getUrlParam('notificationId');
+  const notificationId = getUrlParam("notificationId");
 
   if (!date || !time || !dosage || !medicationId) {
     return;
@@ -138,36 +141,31 @@ function submitNotification() {
   const payload = {
     dateTime,
     dosage,
-    profile: '',
+    profile: "",
   };
   let result;
 
   // Get notifications collection
   const notificationsCollection = db
-    .collection('users')
+    .collection("users")
     .doc(currentUserId)
-    .collection('medications')
+    .collection("medications")
     .doc(medicationId)
-    .collection('notifications');
+    .collection("notifications");
 
   if (notificationId) {
     // updateFlow
-    result = notificationsCollection
-      .doc(notificationId)
-      .set(payload);
+    result = notificationsCollection.doc(notificationId).set(payload);
   } else {
     // add flow
-    result = notificationsCollection
-      .add(payload);
+    result = notificationsCollection.add(payload);
   }
 
   result
     .then((response) => {
-      console.log('Success:', response);
-      window.alert(
-          "Notification is set"
-      );
-      window.location = 'notification-scr.html';
+      console.log("Success:", response);
+      window.alert("Notification is set");
+      window.location = "notification-scr.html";
       // if (confirm('Set another notification?')) {
       //   inputDate.value = '';
       //   inputDosage.value = '';
@@ -177,7 +175,7 @@ function submitNotification() {
       // }
     })
     .catch((error) => {
-      console.error('Error: ', error);
+      console.error("Error: ", error);
     });
 }
 
