@@ -16,7 +16,7 @@ a {
 }
 
 .Pills {
-  margin-top: 5%;
+  /* margin-top: 5%; */
   border-radius: 10px;
   /* text-align: center; */
   width: 60%;
@@ -26,7 +26,8 @@ a {
   padding-left: 5%;
   padding-right: 5%;
   box-shadow: 0px 5px gray;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
+  margin: 1rem;
 }
 
 .med-expiring {
@@ -61,11 +62,13 @@ a {
 }
 
 #addMedication {
-  margin-top: 2%;
-  margin-left: 40%;
+  /* margin-top: 2%;
+  margin-left: 40%; */
+  margin: auto;
+  display: flex;
   border-radius: 10px;
   padding: 2%;
-  width: 15%;
+  width: 30%;
   color: white;
   text-align: center;
   border: none;
@@ -85,3 +88,4 @@ footer {
   width: 60%;
   margin-top: 20px;
 }
+
