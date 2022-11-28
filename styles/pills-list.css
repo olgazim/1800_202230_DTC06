@@ -65,7 +65,7 @@ a {
   /* margin-top: 2%;
   margin-left: 40%; */
   margin: auto;
-  display: flex;
+  display: block;
   border-radius: 10px;
   padding: 2%;
   width: 30%;
