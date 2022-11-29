@@ -18,7 +18,7 @@ function showCheckbox() {
 
 function setup() {
   var checkbox = document.getElementById("checkboxDays");
-  checkbox.style.display = "none";
+  checkbox.style.display = "none"; // set to none to hide the checkbox
 
   $("#form-check-input-selectDays").on("click", showCheckbox); // show the checkbxes to select days when the user selects "Select days" radio button
   $("#form-check-input-everyDay").on("click", hideCheckbox); // if the user selects "Every day" radio button, hide the checkboxes to select days
@@ -38,12 +38,13 @@ function setup() {
 
 function getLoggedUser() {
   firebase.auth().onAuthStateChanged((user) => {
+    // check that user is logged in
     if (user) {
       console.log(
         `user logged in with email [${user.email}], id [${user.uid}]`
       );
       currentUserId = user.uid;
-      fillMedicationList(currentUserId);
+      fillMedicationList(currentUserId); // add the current user's medication list to the screen
       fillValues(currentUserId);
     } else {
       alert("no logged in user");
@@ -181,6 +182,7 @@ function submitNotification() {
 
 getLoggedUser();
 
+// add event listener to set another notification button
 $("#setAnotherButton").on("click", function () {
   $("#setAnotherReminder").append(
     `
