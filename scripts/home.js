@@ -1,56 +1,42 @@
-function getNotificationsList() {
-  firebase.auth().onAuthStateChanged(async (user) => {
-    //Check if user is signed in
+let currentUserId;
+let docId;
+
+// authenticate user
+function getLoggedUser() {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      const medications = [];
-
-      await db
-        .collection("users")
-        .doc(user.uid)
-        .collection("medications")
-        .get()
-        .then((medSnapshot) => {
-          medSnapshot.docs.forEach((doc) => {
-            medications.push({
-              id: doc.id,
-              ...doc.data(),
-            });
-          });
-        });
-
-      const notificationCollections = medications.map((medication) => {
-        return db
-          .collection("users")
-          .doc(user.uid)
-          .collection("medications")
-          .doc(medication.id)
-          .collection("notifications")
-          .orderBy("dateTime", "asc")
-          .get();
-      });
-
-      Promise.all(notificationCollections)
-        .then((response) => {
-          response.forEach((notificationCollection, index) => {
-            const medication = medications[index];
-
-            notificationCollection.docs.forEach((notification) => {
-              buildNotifications(
-                notification.id,
-                notification.data(),
-                medication
-              );
-            });
-          });
-        })
-        .catch((error) => {
-          console.log("[getNotificationsList] error:", error);
-        });
+      console.log(
+        `user logged in with email [${user.email}], id [${user.uid}]`
+      );
+      currentUserId = user.uid;
+      docId = getDocIdFromParams();
+      displayMedicationDescription(currentUserId, docId);
     } else {
-      // User is not signed in
-      console.log("No user is signed in");
+      alert("no logged in user");
     }
   });
 }
 
-getNotificationsList();
+function getDocIdFromParams() {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  return params.docId;
+}
+
+// display medication descriptions
+function displayMedicationDescription(userId, medId) {
+  db.collection("users")
+    .doc(userId)
+    .collection("medications")
+    .doc(medId)
+    .get()
+    .then((aMedication) => {
+      const doc = aMedication.data();
+      document.getElementById("medName").value = doc.name;
+      document.getElementById("medDosage").value = doc.dosage;
+      document.getElementById("medDescr").value = doc.description;
+      document.getElementById("medExpDate").value = doc.expiration;
+    });
+}
+
+getLoggedUser();
