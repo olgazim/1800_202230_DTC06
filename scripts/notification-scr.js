@@ -20,6 +20,7 @@ var d = n.getDate();
 
 document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
 
+// authenticate user and get medications
 function getNotificationsList() {
   firebase.auth().onAuthStateChanged(async (user) => {
     //Check if user is signed in
@@ -40,6 +41,7 @@ function getNotificationsList() {
           });
         });
 
+      // get the notification collection
       const notificationCollections = medications.map((medication) => {
         return db
           .collection("users")
@@ -75,6 +77,7 @@ function getNotificationsList() {
   });
 }
 
+// implement notification cards onto screen
 function buildNotifications(id, data, medication) {
   const [date, time] = data.dateTime.toDate().toLocaleString().split(",");
 
@@ -106,6 +109,7 @@ function buildNotifications(id, data, medication) {
   });
 }
 
+// delete notification function
 function deleteNotification(notificationId, medicationId) {
   if (confirm("Do you want to delete this notification?")) {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -133,6 +137,7 @@ function deleteNotification(notificationId, medicationId) {
   }
 }
 
+// edit notification function
 function editNotification(notificationId, medicationId) {
   window.location.href = `set-notification.html?medicationId=${medicationId}&notificationId=${notificationId}`;
 }
