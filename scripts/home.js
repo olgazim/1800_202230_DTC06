@@ -52,3 +52,5 @@ function getNotificationsList() {
     }
   });
 }
+
+getNotificationsList();
