@@ -1,38 +1,38 @@
 //full month calendar date picker
 var months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 var n = new Date();
 var y = n.getFullYear();
 var m = n.getMonth();
 var d = n.getDate();
 
-document.getElementById('date').innerHTML = d + ' ' + months[m] + ' ' + y;
+document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
 
 function getNotificationsList() {
-  firebase.auth().onAuthStateChanged(async user => {
+  firebase.auth().onAuthStateChanged(async (user) => {
     //Check if user is signed in
     if (user) {
       const medications = [];
 
       await db
-        .collection('users')
+        .collection("users")
         .doc(user.uid)
-        .collection('medications')
+        .collection("medications")
         .get()
         .then((medSnapshot) => {
-          medSnapshot.docs.forEach(doc => {
+          medSnapshot.docs.forEach((doc) => {
             medications.push({
               id: doc.id,
               ...doc.data(),
@@ -42,40 +42,43 @@ function getNotificationsList() {
 
       const notificationCollections = medications.map((medication) => {
         return db
-          .collection('users')
+          .collection("users")
           .doc(user.uid)
-          .collection('medications')
+          .collection("medications")
           .doc(medication.id)
-          .collection('notifications')
+          .collection("notifications")
+          .orderBy("dateTime", "asc")
           .get();
       });
 
       Promise.all(notificationCollections)
         .then((response) => {
-          response.forEach(((notificationCollection, index) => {
+          response.forEach((notificationCollection, index) => {
             const medication = medications[index];
 
             notificationCollection.docs.forEach((notification) => {
-              buildNotifications(notification.id, notification.data(), medication);
+              buildNotifications(
+                notification.id,
+                notification.data(),
+                medication
+              );
             });
-          }));
+          });
         })
         .catch((error) => {
-          console.log('[getNotificationsList] error:', error);
+          console.log("[getNotificationsList] error:", error);
         });
-
     } else {
       // User is not signed in
-      console.log('No user is signed in');
+      console.log("No user is signed in");
     }
   });
 }
 
 function buildNotifications(id, data, medication) {
-  const [date, time] = data.dateTime.toDate().toLocaleString().split(',');
+  const [date, time] = data.dateTime.toDate().toLocaleString().split(",");
 
-  $('#notification-list')
-    .append(`
+  $("#notification-list").append(`
       <div class="notification-wrapper">
         
         <div class="notification-actions">
@@ -104,33 +107,34 @@ function buildNotifications(id, data, medication) {
 }
 
 function deleteNotification(notificationId, medicationId) {
-  if (confirm('Do you want to delete this notification?')) {
-    firebase.auth().onAuthStateChanged(async user => {
+  if (confirm("Do you want to delete this notification?")) {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
-        db
-          .collection('users')
+        db.collection("users")
           .doc(user.uid)
-          .collection('medications')
+          .collection("medications")
           .doc(medicationId)
-          .collection('notifications')
+          .collection("notifications")
           .doc(notificationId)
           .delete()
           .then(() => {
-            console.log('[deleteNotification] success');
+            console.log("[deleteNotification] success");
 
             window.location.reload();
           })
           .catch((error) => {
-            console.error('[deleteNotification] error:', error);
-            window.alert(`[deleteNotification] error (see console output for more info): ${error?.message}`)
-          })
+            console.error("[deleteNotification] error:", error);
+            window.alert(
+              `[deleteNotification] error (see console output for more info): ${error?.message}`
+            );
+          });
       }
     });
   }
 }
 
 function editNotification(notificationId, medicationId) {
-  window.location.href=`set-notification.html?medicationId=${medicationId}&notificationId=${notificationId}`;
+  window.location.href = `set-notification.html?medicationId=${medicationId}&notificationId=${notificationId}`;
 }
 
 getNotificationsList();
