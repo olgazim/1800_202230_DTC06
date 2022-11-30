@@ -11,7 +11,7 @@ This browser based web application to keep track of medication intake.
 - Hi my name is Olga. I'm excited about this project because it will help people I know.
 - Hi my name is Jason. I'm excited about this project because it will help a lot of people keep track of the medication.
 - Hi my name is Natalie and I'm excited about this project because it is important that people take their medication as needed.
-
+- Hi my name is Daniel and I'm excited about this project because I think it can be really helpful for people who are taking care of their   loved ones.
 ## Technologies
 
 Technologies used for this project:
