@@ -36,6 +36,7 @@
 </head>
 
 <body>
+
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light py-2">
         <div class="container-fluid">
@@ -48,10 +49,12 @@
             <!-- <span class="material-icons"> add_circle_outline </span> -->
         </div>
     </nav>
+
     <!-- Body -->
     <div class="container-fluid">
         <form>
             <fieldset id="userInfo" disabled>
+
                 <!-- A C C O U N T   P I C T U R E -->
                 <div class="form-group">
                     <div class="d-flex justify-content-start">
@@ -63,6 +66,7 @@
                         </label>
                     </div>
                 </div>
+
                 <!--   N A M E   -->
                 <div class="form-group">
                     <input type="text" class="form-control" id="userName" placeholder="Username" required />
@@ -76,6 +80,7 @@
                 </div>
             </fieldset>
         </form>
+
         <!--   PROFILE   -->
         <fieldset id="user-profiles" disabled>
             <h4 id="profile-label"> Profiles </h4>
@@ -84,13 +89,12 @@
                 <input type="text" class="form-control" id="profileName" placeholder="Add a Profile Name" required />
                 <div class="invalid-feedback">Please choose a username.</div>
             </div>
-            <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()" hidden> Add Profile Name </button>
+            <button id="addProfile" style="margin-bottom: 100px;" onclick="addProfile()" hidden> Add Profile Name
+            </button>
         </fieldset>
 
         <button id="sign-out" class="btn-outline-primary sign-out">Sign Out</button>
     </div>
-
-
 
     <!-- Bottom Navbar -->
     <footer>

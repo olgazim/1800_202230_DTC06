@@ -22,6 +22,7 @@ const signIn = async (email, password) => {
 //  Event listeners
 //----------------------------------------
 
+// change password field type in order to make password visible
 const togglePasswordVisibility = (event) => {
   const checked = event.target.checked;
 
@@ -47,8 +48,7 @@ const onSubmit = async (event) => {
       const authData = await signIn(email, password);
 
       console.log('Auth data:', authData);
-      // Actions when user is created (e.g. redirect to dashboard)
-      // window.alert('You will be redirected to dashboard page');
+      // Actions when user is created (redirect to home)
       window.location.href = "home.html";
     } catch (error) {
       // Actions when user creation failed (e.g. redirect to login page)

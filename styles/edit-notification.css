@@ -1,0 +1,102 @@
+body {
+    padding-bottom: 5rem;
+}
+
+svg {
+    margin-left: 50px;
+}
+
+.profile-card {
+    text-align: center;
+}
+
+.material-icons.md-48.acc-circle {
+    padding: 10px;
+    display: inline-block;
+    font-size: 48px;
+}
+
+.dropdown {
+    font-size: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+#pillsListTitle {
+    margin-left: 30%;
+    width: 60%;
+    margin-top: 50px;
+}
+
+.date-time {
+    margin-top: 40px;
+}
+
+.set-additional {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cancelButton {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.cancelButton:hover {
+    color: darkgrey;
+}
+
+a.dropdown-toggle,
+a.dropdown-toggle.show {
+    background-color: #406882;
+}
+
+a.dropdown-toggle:hover {
+    background-color: rgb(57, 88, 109);
+}
+
+.frequencyButtons {
+    margin-top: 2%;
+    margin-left: 30%;
+    width: 15%;
+}
+
+#checkboxDays {
+    margin-top: 2%;
+    margin-left: 30%;
+    width: 15%;
+}
+
+
+footer {
+    background-color: #1a374d;
+}
+
+i.current-icon-color {
+    color: white;
+}
+
+i.other-icon-color {
+    color: #406882;
+}
+
+.navbar {
+    background-color: #1a374d;
+}
+
+#edit-notification {
+    margin-top: 2rem;
+    margin-left: 40%;
+    border-radius: 10px;
+    padding: 2%;
+    width: 20%;
+    color: white;
+    text-align: center;
+    border: none;
+    background-color: #406882;
+}
+
+.edit-title {
+    text-align: center;
+    padding-top: .5rem;
+}

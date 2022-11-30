@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 5rem;
+}
+
 svg {
   margin-left: 50px;
 }
@@ -18,13 +22,15 @@ svg {
   display: inline-block;
 }
 
-#pillsListTitle {
+#pillsListTitle,
+#input-wrapper {
   margin-left: 30%;
   width: 60%;
   margin-top: 50px;
 }
 
-.date-time {
+.date-time,
+.field-wrapper {
   margin-top: 40px;
 }
 
@@ -54,13 +60,15 @@ a.dropdown-toggle:hover {
 .frequencyButtons {
   margin-top: 2%;
   margin-left: 30%;
-  width: 15%;
+  width: 60%;
 }
 
 #checkboxDays {
   margin-top: 2%;
   margin-left: 30%;
+  padding-left: 1.5rem;
   width: 15%;
+  display: none;
 }
 
 
@@ -80,7 +88,8 @@ i.other-icon-color {
   background-color: #1a374d;
 }
 
-#add-notification, #setAnotherButton {
+#add-notification,
+#setAnotherButton {
   margin-top: 2%;
   margin-left: 40%;
   border-radius: 10px;
@@ -90,4 +99,30 @@ i.other-icon-color {
   text-align: center;
   border: none;
   background-color: #406882;
+}
+
+.set-title {
+  text-align: center;
+}
+
+#radio-every-day,
+#radio-select-days {
+  margin-right: .5rem;
+}
+
+.delete-time-button {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px #D6E4E5;
+  margin-left: .5rem;
+  transition: box-shadow .1s ease-in;
+}
+
+.delete-time-button:hover {
+  box-shadow: 3px 3px 6px lightgray;
+}
+
+.delete-time-svg {
+  margin: 0;
 }

@@ -22,6 +22,7 @@ const signUp = async (email, password) => {
 //  Event listeners
 //----------------------------------------
 
+// change password field type in order to make password visible
 const togglePasswordVisibility = (event) => {
   const checked = event.target.checked;
 
@@ -29,6 +30,7 @@ const togglePasswordVisibility = (event) => {
   inputPasswordConfirm.type = checked ? "text" : "password";
 };
 
+// check whether values form Password anf Confirm password fields match
 const onPasswordChange = () => {
   const passwordValue = inputPassword.value;
   const passwordConfirmValue = inputPasswordConfirm.value;
@@ -60,7 +62,7 @@ const onSubmit = async (event) => {
       const authData = await signUp(email, password);
       var users = authData.user;
       console.log("Auth data:", authData);
-      // Actions when user is created (e.g. redirect to dashboard)
+      // Actions when user is created (redirect to home)
       db.collection("users")
         .doc(users.uid)
         .set({
@@ -75,7 +77,7 @@ const onSubmit = async (event) => {
           window.location.href = "home.html";
         });
     } catch (error) {
-      // Actions when user creation failed (e.g. redirect to login page)
+      // Actions when user creation failed (redirect to sign in page)
       // Check if user already exists
       if (error.code === "auth/email-already-in-use") {
         // Redirect to login page
@@ -117,7 +119,6 @@ function showUploadedPicture() {
   const image = document.getElementById("avatar_photo"); // pointer #2
 
   //attach listener to input file
-  //when this file changes, do something
   fileInput.addEventListener("change", function (e) {
     //the change event returns a file "e.target.files[0]"
     var blob = URL.createObjectURL(e.target.files[0]);

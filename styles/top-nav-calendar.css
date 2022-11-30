@@ -53,8 +53,9 @@ body {
 /* Days (1-31) */
 .days {
   padding: 10px 0;
-  background: #eee;
+  background: #EFF5F5;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .days li {
@@ -64,7 +65,7 @@ body {
   text-align: center;
   margin-bottom: 5px;
   font-size: 12px;
-  color: #777;
+  color: #1a374d;
 }
 
 /* Highlight the "current" day */
