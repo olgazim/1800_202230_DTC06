@@ -6,18 +6,19 @@ let currentUserId;
 const selectedDaysSet = new Set();
 const timeSlots = [];
 
-const inputWrapper = document.getElementById('input-wrapper');
+const timeWrapper = document.getElementById('time-wrapper');
 const inputOption = document.getElementById('medication-options');
 const inputDosage = document.getElementById('medication-dosage');
 const inputStartDate = document.getElementById('notification-start-date');
 const inputEndDate = document.getElementById('notification-end-date');
-const inputSelectedDays = document.getElementById('radio-select-days');
-const inputEveryDay = document.getElementById('radio-every-day');
-const buttonAddTime = document.getElementById('setAnotherButton');
+const inputSelectedDays = document.getElementById('radio-frequency-custom');
+const inputEveryDay = document.getElementById('radio-frequency-every-day');
+const buttonAddTime = document.getElementById('add-time');
+const daysCheckboxes = document.getElementById('days-checkboxes');
 
 buttonAddTime.addEventListener('click', addTime);
-inputSelectedDays.addEventListener('click', showCheckbox);
-inputEveryDay.addEventListener('click', hideCheckbox);
+inputSelectedDays.addEventListener('click', showCheckboxes);
+inputEveryDay.addEventListener('click', hideCheckboxes);
 
 async function getLoggedUser() {
   await firebase.auth().onAuthStateChanged((user) => {
@@ -63,22 +64,25 @@ function addTime() {
 
   const id = Math.random();
 
-  $(inputWrapper).append(`
-    <div class="field-wrapper" id="additional-time-${id}">
-      <label for="notification-time-${id}">Time:</label>
-      <input type="time" id="notification-time-${id}" name="notification-time-${id}" required/>
-      <button class="delete-time-button" id="delete-time-btn-${id}">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          fill="#406882"
-          class="bi bi-trash3 delete-time-svg"
-          viewBox="0 0 16 16"
-        >
-          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-        </svg>
-      </button>         
+  $(timeWrapper).append(`
+    <div class="field-wrapper mb-2" id="additional-time-${id}">
+      <label class="form-label" for="notification-time-${id}">Time:</label>
+      <div class="d-flex">
+        <input class="form-control" type="time" id="notification-time-${id}" name="notification-time-${id}" required/>
+        <button class="btn btn-light delete-time-button" id="delete-time-btn-${id}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#406882"
+            class="bi bi-trash3 delete-time-svg"
+            viewBox="0 0 16 16"
+          >
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+          </svg>
+        </button>
+      </div>
+               
     </div>
   `);
 
@@ -95,12 +99,12 @@ function addTime() {
   }
 }
 
-function hideCheckbox() {
-  $('#checkboxDays').hide();
+function hideCheckboxes() {
+  $(daysCheckboxes).hide();
 }
 
-function showCheckbox() {
-  $('#checkboxDays').show();
+function showCheckboxes() {
+  $(daysCheckboxes).show();
 }
 
 function setUrlParam(param, value) {
@@ -139,22 +143,22 @@ function getDatesInRange(startDate, endDate, limitedDays) {
 }
 
 function fillMedicationList(userId) {
-  db.collection("users")
+  db.collection('users')
     .doc(userId)
-    .collection("medications")
+    .collection('medications')
     .get()
     .then((allMeds) => {
-      const medicationId = getUrlParam("medicationId");
+      const medicationId = getUrlParam('medicationId');
 
-      $("#medication-options").change((event) => {
-        setUrlParam("medicationId", event.target.value);
+      $('#medication-options').change((event) => {
+        setUrlParam('medicationId', event.target.value);
       });
 
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
-        $("#medication-options").append(`
-          <option ${medicationId === docRef.id ? "selected" : ""} value="${
+        $('#medication-options').append(`
+          <option ${medicationId === docRef.id ? 'selected' : ''} value="${
           docRef.id
         }">${doc.name}</option>
         `);
@@ -172,7 +176,7 @@ async function submitNotification() {
     .filter(Boolean);
 
   if (!medicationId || !dosage || !startDate || !endDate || !time.length) {
-    const message = `Validation failed. Missing: ${!medicationId ? '\n  - Medication' : ''}${!dosage ? '\n  - Dosage' : ''}${!startDate ? '\n  - Start date' : ''}${!endDate ? '\n  - End Date' : ''}${!time ? '\n  - Time' : ''}`;
+    const message = `Validation failed. Missing: ${!medicationId ? '\n  - Medication' : ''}${!dosage ? '\n  - Dosage' : ''}${!startDate ? '\n  - Start date' : ''}${!endDate ? '\n  - End Date' : ''}${!time.length ? '\n  - Time' : ''}`;
 
     return window.alert(message);
   }

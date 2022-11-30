@@ -44,7 +44,7 @@
     </div>
   </nav>
 
-  <!-- Profile dropdown menu -->
+  <!-- Profile icon and dropdown menu -->
   <div class="profile-card">
     <div class="dropdown">
       <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,104 +59,118 @@
   </div>
 
   <hr />
-  <h3 class="set-title">Set Notification</h3>
+  <h3 class="set-title mb-4">Set Notification</h3>
 
-  <div id="input-wrapper">
-    <div class="field-wrapper">
-      <label for="medication-options">Select Medication:</label>
-      <select id="medication-options" required>
+  <!-- F O R M -->
+  <div class="d-flex flex-column mx-auto mb-4 col-10 col-sm-8 col-md-5 col-lg-4" id="input-wrapper">
+    <!--   M E D I C A T I O N   -->
+    <div class="mb-4">
+      <label class="form-label" for="medication-options">Select Medication:</label>
+      <select class="form-select form-select-md" id="medication-options" required>
         <option disabled selected value> -- select medication --</option>
       </select>
     </div>
-    <div class="field-wrapper">
-      <label for="medication-dosage">Dosage:</label>
-      <input id="medication-dosage" required />
+
+    <!--   D O S A G E   -->
+    <div class="mb-4">
+      <label class="form-label" for="medication-dosage">Dosage:</label>
+      <input class="form-control" id="medication-dosage" required />
     </div>
-    <div class="field-wrapper">
-      <label for="notification-start-date">Start Date:</label>
-      <input type="date" id="notification-start-date" name="notification-start-date" required />
+
+    <!--    S T A R T   D A T E   -->
+    <div class="mb-4">
+      <label class="form-label" for="notification-start-date">Start Date:</label>
+      <input class="form-control" type="date" id="notification-start-date" name="notification-start-date" required />
     </div>
-    <div class="field-wrapper">
-      <label for="notification-end-date">End Date:</label>
-      <input type="date" id="notification-end-date" name="notification-end-date" required />
+
+    <!--    E N D   D A T E   -->
+    <div class="mb-4">
+      <label class="form-label" for="notification-end-date">End Date:</label>
+      <input class="form-control" type="date" id="notification-end-date" name="notification-end-date" required />
     </div>
-    <div class="field-wrapper" id="additional-time-0">
-      <label for="notification-time-0">Time:</label>
-      <input type="time" id="notification-time-0" name="notification-time-0" required />
+
+    <!--    T I M E   -->
+    <div class="mb-4" id="time-wrapper">
+      <div class="mb-2" id="additional-time-0">
+        <label class="form-label" for="notification-time-0">Time:</label>
+        <input class="form-control" type="time" id="notification-time-0" name="notification-time-0" required />
+      </div>
+    </div>
+
+    <!--   F R E Q U E N C Y   -->
+    <div class="mb-2 frequency-switcher">
+      <h6>Frequency:</h6>
+      <div class="d-flex flex-nowrap form-check mx-4">
+        <input checked class="form-check-input" id="radio-frequency-every-day" name="radio-frequency" type="radio">
+        <label class="form-check-label" for="radio-frequency-every-day">
+          Every day
+        </label>
+      </div>
+      <div class="d-flex flex-nowrap form-check mx-4">
+        <input class="form-check-input" id="radio-frequency-custom" name="radio-frequency" type="radio">
+        <label class="form-check-label" for="radio-frequency-custom">
+          Select days
+        </label>
+      </div>
+    </div>
+
+    <!--   D A Y S   -->
+    <div id="days-checkboxes">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-sun" value="0" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-sun">
+          Sunday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-mon" value="1" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-mon">
+          Monday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-tue" value="2" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-tue">
+          Tuesday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-wed" value="3" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-wed">
+          Wednesday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-thu" value="4" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-thu">
+          Thursday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-fri" value="5" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-fri">
+          Friday
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="cb-sat" value="6" onclick="toggleDay(this)">
+        <label class="form-check-label" for="cb-sat">
+          Saturday
+        </label>
+      </div>
     </div>
   </div>
 
-  <div id="setAnotherReminder"></div>
-
-  <div class="frequencyButtons">
-    <h6>Frequency:</h6>
-    <div class="d-flex flex-nowrap form-check">
-      <input checked class="form-check-input-everyDay" id="radio-every-day" name="flexRadioDefault"
-        onclick="hideCheckbox()" type="radio">
-      <label class="form-check-label" for="radio-every-day">
-        Every day
-      </label>
-    </div>
-    <div class="d-flex flex-nowrap form-check">
-      <input class="form-check-input-selectDays" type="radio" name="flexRadioDefault" id="radio-select-days"
-        onclick="showCheckbox()">
-      <label class="form-check-label" for="radio-select-days">
-        Select days
-      </label>
-    </div>
+  <!--   A D D   T I M E   -->
+  <div class="d-flex justify-content-center form-group mb-4">
+    <button class="btn btn-outline-secondary btn-sm col-10 col-sm-8 col-md-5 col-lg-4" id="add-time"> Set Another
+      Reminder</button>
   </div>
 
-  <fieldset id="checkboxDays">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-sun" value="0" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-sun">
-        Sunday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-mon" value="1" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-mon">
-        Monday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-tue" value="2" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-tue">
-        Tuesday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-wed" value="3" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-wed">
-        Wednesday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-thu" value="4" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-thu">
-        Thursday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-fri" value="5" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-fri">
-        Friday
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="cb-sat" value="6" onclick="toggleDay(this)">
-      <label class="form-check-label" for="cb-sat">
-        Saturday
-      </label>
-    </div>
-  </fieldset>
-
-  <div class="form-group">
-    <button id="setAnotherButton"> Set Another Reminder</button>
-  </div>
-
-  <div class="form-group">
-    <button id="add-notification" onclick="submitNotification()">
+  <!--   S U B M I T   -->
+  <div class="d-flex justify-content-center form-group mb-4">
+    <button class="btn btn-primary col-10 col-sm-8 col-md-5 col-lg-4" id="add-notification"
+      onclick="submitNotification()">
       Add notification
     </button>
   </div>

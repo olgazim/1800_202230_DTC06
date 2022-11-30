@@ -22,24 +22,14 @@ svg {
   display: inline-block;
 }
 
-input{
-  border: 1px solid #1a374d;
-  border-radius: 5px;;
-}
-
-#pillsListTitle,
-#input-wrapper {
-  margin-left: auto;
-  margin-right: auto;
+#pillsListTitle {
+  margin-left: 30%;
   width: 60%;
   margin-top: 50px;
-  color: #1a374d;
 }
 
-.date-time,
-.field-wrapper {
-  margin-top: 30px;
-  width:100%;
+.date-time {
+  margin-top: 40px;
 }
 
 .set-additional {
@@ -96,26 +86,31 @@ i.other-icon-color {
   background-color: #1a374d;
 }
 
-#add-notification,
+#add-notification {
+  background-color: #406882;
+}
+
 #setAnotherButton {
   margin-top: 2%;
-  margin-left: 25%;
-  margin-right: 25%;
-  border-radius: 7px;
+  margin-left: 40%;
+  border-radius: 10px;
   padding: 2%;
-  width: 50%;
-  color: white;
+  width: 30%;
   text-align: center;
   border: none;
   background-color: #406882;
+}
+
+#add-time {
+  color: #1a374d;
 }
 
 .set-title {
   text-align: center;
 }
 
-#radio-every-day,
-#radio-select-days {
+#radio-frequency-custom,
+#radio-frequency-every-day {
   margin-right: .5rem;
 }
 
@@ -123,7 +118,6 @@ i.other-icon-color {
   background-color: white;
   border: 0;
   border-radius: 2px;
-  /* box-shadow: 2px 2px 3px #D6E4E5; */
   margin-left: .5rem;
   transition: box-shadow .1s ease-in;
 }
@@ -134,4 +128,9 @@ i.other-icon-color {
 
 .delete-time-svg {
   margin: 0;
+}
+
+#days-checkboxes {
+  display: none;
+  margin-left: 1.5rem;
 }
