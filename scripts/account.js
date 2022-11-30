@@ -306,4 +306,4 @@ function addProfile() {
   }
 }
 
-db.collection("users").doc(user.uid).then();
+// db.collection("users").doc(user.uid).then();

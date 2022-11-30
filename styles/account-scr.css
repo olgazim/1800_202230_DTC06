@@ -121,6 +121,10 @@
     display: none;
 }
 
+#avatar-image{
+    margin:15px;
+}
+
 #editBtn {
     background: none;
     outline: none;
@@ -161,4 +165,5 @@ i.other-icon-color {
 
 #sign-out {
     margin-bottom: 3em;
+    border-radius: 7px;
 }
