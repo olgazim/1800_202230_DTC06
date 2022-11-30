@@ -18,7 +18,7 @@ var y = n.getFullYear();
 var m = n.getMonth();
 var d = n.getDate();
 
-document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
+// document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
 
 // authenticate user and get medications
 function getNotificationsList() {
