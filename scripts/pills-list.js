@@ -1,5 +1,6 @@
 let currentUserId;
 
+//Checks if a user is logged in
 function getLoggedUser() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -14,6 +15,7 @@ function getLoggedUser() {
   });
 }
 
+//fills the user's list of medication based on their user ID
 function fillMedicationList(userId) {
   db.collection("users")
     .doc(userId)
@@ -23,6 +25,7 @@ function fillMedicationList(userId) {
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
+        //Appends a pill card with the medication information collected from firebase
         $("div#pillsList").append(
           `<div class="Pills ${getExpirationClass(doc.expiration)}" id="card_${
             docRef.id
@@ -53,6 +56,7 @@ function fillMedicationList(userId) {
     });
 }
 
+//Deletes the selected medication with the specified medication ID collected from firebase
 function deleteMed(docId) {
   if (!confirm("Delete medication?")) return;
   db.collection("users")
@@ -61,6 +65,7 @@ function deleteMed(docId) {
     .doc(docId)
     .delete()
     .then(() => {
+      //confirms successful deletion
       console.log("Document successfully deleted");
       document.getElementById("card_" + docId).remove();
     })
@@ -69,6 +74,9 @@ function deleteMed(docId) {
     });
 }
 
+//Checks status of expiration date on medication. Collects the expiration date for specified
+//medication from firebase and applies respective styles on how close the medication is to expiration
+//or if the medication has already expired
 function getExpirationClass(medExpiration) {
   const daysBeforeExpire =
     (new Date(medExpiration) - Date.now()) / (1000 * 60 * 60 * 24);

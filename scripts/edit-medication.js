@@ -1,6 +1,7 @@
 let currentUserId;
 let docId;
 
+//Checks if a user is logged in
 function getLoggedUser() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -22,6 +23,7 @@ function getDocIdFromParams() {
   return params.docId;
 }
 
+//Displays filled form of a medication's description based on the ID of the medication and user
 function displayMedicationDescription(userId, medId) {
   //   console.log("hello");
   db.collection("users")
@@ -38,14 +40,18 @@ function displayMedicationDescription(userId, medId) {
     });
 }
 
+//updates the specified medication
 function updateMed(e) {
+  //prevents the default action of the form
   e.preventDefault();
 
+  //using the value of each html element ->
   const name = document.getElementById("medName").value;
   const dosage = document.getElementById("medDosage").value;
   const descr = document.getElementById("medDescr").value;
   const expiration = document.getElementById("medExpDate").value;
 
+  //the firestore medication collection is then updated
   db.collection("users")
     .doc(currentUserId)
     .collection("medications")
@@ -56,6 +62,7 @@ function updateMed(e) {
       description: descr,
       expiration: expiration,
     })
+    //once medication successfully updates user is automatically brought back to their pills list screen
     .then(() => {
       console.log("Document successfully written!");
       window.location.href = "pills-list.html";
@@ -65,6 +72,7 @@ function updateMed(e) {
     });
 }
 
+//Providing handler to submit event of the form
 $("form#editmed").submit(updateMed);
 
 getLoggedUser();
