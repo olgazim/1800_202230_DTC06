@@ -7,15 +7,18 @@ const selectedDaysSet = new Set();
 const timeSlots = [];
 
 const timeWrapper = document.getElementById('time-wrapper');
-const inputOption = document.getElementById('medication-options');
+const dropdownOptions = document.getElementById('medication-options');
 const inputDosage = document.getElementById('medication-dosage');
 const inputStartDate = document.getElementById('notification-start-date');
 const inputEndDate = document.getElementById('notification-end-date');
 const inputSelectedDays = document.getElementById('radio-frequency-custom');
 const inputEveryDay = document.getElementById('radio-frequency-every-day');
 const buttonAddTime = document.getElementById('add-time');
+const buttonDropDown = document.getElementById('medication-dropdown');
 const daysCheckboxes = document.getElementById('days-checkboxes');
+const dropDownToggle = document.querySelectorAll('.dropdown-toggle');
 
+dropdownOptions.addEventListener('click', setMedication);
 buttonAddTime.addEventListener('click', addTime);
 inputSelectedDays.addEventListener('click', showCheckboxes);
 inputEveryDay.addEventListener('click', hideCheckboxes);
@@ -28,6 +31,8 @@ async function getLoggedUser() {
       currentUserId = user.uid;
       const inputTimeRef = document.getElementById('notification-time-0');
       timeSlots.push(inputTimeRef);
+
+      $(dropDownToggle).dropdown();
 
       fillMedicationList(currentUserId);
     } else {
@@ -58,10 +63,12 @@ function deleteTime(ref) {
 }
 
 function addTime() {
+  // do not add more than 5 tiem slots
   if (timeSlots >= TIME_SLOT_LIMIT) {
     return;
   }
 
+  // get random value to use as unique id
   const id = Math.random();
 
   $(timeWrapper).append(`
@@ -94,6 +101,7 @@ function addTime() {
   const deleteButton = document.getElementById(`delete-time-btn-${id}`);
   deleteButton.addEventListener('click', () => deleteTime(timeWrapperRef));
 
+  // hide "add time" button if limit is reached
   if (timeSlots.length >= TIME_SLOT_LIMIT) {
     $(buttonAddTime).hide();
   }
@@ -114,6 +122,7 @@ function setUrlParam(param, value) {
 
   const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
 
+  // update query params silently
   history.pushState(null, '', newRelativePathQuery);
 }
 
@@ -142,6 +151,29 @@ function getDatesInRange(startDate, endDate, limitedDays) {
   return dates;
 }
 
+function setMedication(event) {
+  // set medicationId to query params for later use during submit
+  setUrlParam('medicationId', event.target.dataset.id);
+
+  // get all option DOM nodes
+  const options = dropdownOptions.querySelectorAll('.dropdown-item');
+
+  // remove "active" class name
+  Array.from(options).forEach((option) => option.classList.remove('active'));
+
+  // add "active" class name to selected option
+  event.target.classList.add('active');
+
+  // add medication name to dropdown button
+  buttonDropDown.innerText = event.target.dataset.name;
+
+  // add medicationId for later use during submit
+  dropDownToggle.value = event.target.dataset.id;
+
+  // hide dropdown
+  $(dropDownToggle).dropdown('hide');
+}
+
 function fillMedicationList(userId) {
   db.collection('users')
     .doc(userId)
@@ -150,24 +182,24 @@ function fillMedicationList(userId) {
     .then((allMeds) => {
       const medicationId = getUrlParam('medicationId');
 
-      $('#medication-options').change((event) => {
-        setUrlParam('medicationId', event.target.value);
-      });
-
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
         $('#medication-options').append(`
-          <option ${medicationId === docRef.id ? 'selected' : ''} value="${
-          docRef.id
-        }">${doc.name}</option>
+          <div
+            class="dropdown-item${medicationId === docRef.id ? ' active' : ''}"
+            data-id="${docRef.id}"
+            data-name="${doc.name}"
+          >
+            ${doc.name}
+          </div>
         `);
       });
     });
 }
 
 async function submitNotification() {
-  const medicationId = inputOption.value;
+  const medicationId = dropDownToggle.value;
   const dosage = inputDosage.value;
   const startDate = inputStartDate.value;
   const endDate = inputEndDate.value;

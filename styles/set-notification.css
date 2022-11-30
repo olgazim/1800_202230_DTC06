@@ -20,6 +20,7 @@ svg {
   font-size: 10px;
   padding: 5px;
   display: inline-block;
+  color: white;
 }
 
 #pillsListTitle {
@@ -88,6 +89,7 @@ i.other-icon-color {
 
 #add-notification {
   background-color: #406882;
+  color: white;
 }
 
 #setAnotherButton {
@@ -96,13 +98,10 @@ i.other-icon-color {
   border-radius: 10px;
   padding: 2%;
   width: 30%;
+  color: white;
   text-align: center;
   border: none;
   background-color: #406882;
-}
-
-#add-time {
-  color: #1a374d;
 }
 
 .set-title {
@@ -133,4 +132,28 @@ i.other-icon-color {
 #days-checkboxes {
   display: none;
   margin-left: 1.5rem;
+}
+
+#add-time {
+  color: #1a374d;
+}
+
+.medication-wrapper {
+  position: relative;
+}
+
+.dropdown-menu > .dropdown-item.active {
+  background-color: #406882;
+  color: white;
+}
+
+.dropdown > #medication-dropdown {
+  color: #1a374d;
+  background-color: transparent;
+  border-color: #ced4da;
+  color: white;
+}
+
+#add-time {
+  color: #1a374d;
 }
