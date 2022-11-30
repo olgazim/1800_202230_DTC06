@@ -40,6 +40,12 @@ svg {
 .cancelButton {
     text-decoration: none;
     color: aliceblue;
+   
+}
+
+.cancelButton>p{
+    display: table-cell;
+        vertical-align: middle;
 }
 
 .cancelButton:hover {
@@ -49,6 +55,7 @@ svg {
 a.dropdown-toggle,
 a.dropdown-toggle.show {
     background-color: #406882;
+    border: 0px;
 }
 
 a.dropdown-toggle:hover {

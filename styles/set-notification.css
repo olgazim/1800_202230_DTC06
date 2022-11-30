@@ -51,6 +51,7 @@ svg {
 a.dropdown-toggle,
 a.dropdown-toggle.show {
   background-color: #406882;
+  border: 0px;
 }
 
 a.dropdown-toggle:hover {
