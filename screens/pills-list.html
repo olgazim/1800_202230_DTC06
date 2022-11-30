@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
-<body onload="fillWeeklyCalendarHeader()">
+<body>
   <nav class="navbar navbar-expand-lg py-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -59,7 +59,7 @@
     <li>Sat</li>
   </ul>
 
-  <ul class="days">
+  <ul onload="fillWeeklyCalendarHeader()" class="days">
     <li id="day_0">1</li>
     <li id="day_1">2</li>
     <li id="day_2">3</li>

@@ -58,6 +58,3 @@ function getTotalDaysInMonth(date) {
   );
   return days;
 }
-
-//function is always called upon opening the notifications screen page
-fillMonthlyCalendar();
