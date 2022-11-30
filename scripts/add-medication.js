@@ -1,5 +1,6 @@
 let userId;
 
+//Checks if a user is logged in
 function getLoggedUser() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -13,7 +14,9 @@ function getLoggedUser() {
   });
 }
 
-$("form#newmed").submit(function (e) {
+//Adds a new medication
+function addMedication(e) {
+  //prevents the default action of the form
   e.preventDefault();
 
   const name = document.getElementById("medName").value;
@@ -38,6 +41,8 @@ $("form#newmed").submit(function (e) {
     .catch((error) => {
       console.error("Error adding document: ", error);
     });
-});
+}
 
 getLoggedUser();
+
+$("form#newmed").submit(addMedication);
