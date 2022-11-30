@@ -79,10 +79,13 @@ i.other-icon-color {
 }
 
 #setNotification {
-  margin: 2% 36% 15% 36%;
+  /* margin-top: 2%; */
+  /* margin-left: 40%; */
+  margin: auto;
+  display: block;
   border-radius: 10px;
   padding: 2%;
-  width: 28%;
+  width: 30%;
   color: white;
   text-align: center;
   border: none;

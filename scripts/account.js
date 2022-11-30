@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var currentUser;
 // var currentUserAuth = authClient.user
@@ -6,38 +6,45 @@ var currentUser;
 //----------------------------------------
 //  Get DOM nodes
 //----------------------------------------
-const buttonSignOut = document.getElementById('sign-out');
-const buttonSave = document.getElementById('saveBtn');
-const buttonEdit = document.getElementById('editBtn');
-const buttonAddProfile = document.getElementById('addProfile');
-const avatarContainer = document.getElementById('avatar-image');
-const inputImage = document.getElementById('avatar_upload');
-const inputName = document.getElementById('userName');
-const inputEmail = document.getElementById('email');
-const inputProfile = document.getElementById('profileName');
-const listProfile = document.getElementById('profile-list');
-const fieldSetUserInfo = document.getElementById('userInfo');
-const fieldSetUserProfiles = document.getElementById('user-profiles');
-const avatarEditLabel = document.getElementById('avatar-edit-label');
+const buttonSignOut = document.getElementById("sign-out");
+const buttonSave = document.getElementById("saveBtn");
+const buttonEdit = document.getElementById("editBtn");
+const buttonAddProfile = document.getElementById("addProfile");
+const avatarContainer = document.getElementById("avatar-image");
+const inputImage = document.getElementById("avatar_upload");
+const inputName = document.getElementById("userName");
+const inputEmail = document.getElementById("email");
+const inputProfile = document.getElementById("profileName");
+const listProfile = document.getElementById("profile-list");
+const fieldSetUserInfo = document.getElementById("userInfo");
+const fieldSetUserProfiles = document.getElementById("user-profiles");
+const avatarEditLabel = document.getElementById("avatar-edit-label");
 
 // Firebase actions
+// Sign out
 
 const signOut = () => {
   return authClient.signOut();
 };
 
+// Remove profile
+
 const removeProfile = (profileName) => () => {
   if (profileName) {
-    currentUser.update({
-      profiles: firebase.firestore.FieldValue.arrayRemove(profileName),
-    })
+    currentUser
+      .update({
+        profiles: firebase.firestore.FieldValue.arrayRemove(profileName),
+      })
       .then((response) => {
-        console.log(`[removeProfile] success: profile "${profileName}" has been added`, response);
+        console.log(
+          `[removeProfile] success: profile "${profileName}" has been added`,
+          response
+        );
         // clear input state
-        inputProfile.value = '';
+        inputProfile.value = "";
       })
       .catch((error) => {
-        console.error('[removeProfile] error:', error);
+        console.error("[removeProfile] error:", error);
       })
       .finally(() => {
         // update profile list
@@ -61,39 +68,45 @@ const convertToBase64 = (file) => {
   });
 };
 
+// Edit User Profile
+
 const enterEditMode = () => {
   fieldSetUserInfo.disabled = false;
   fieldSetUserProfiles.disabled = false;
 
-  avatarEditLabel.classList.remove('avatar-label-hide');
-  buttonSave.removeAttribute('hidden');
-  buttonEdit.setAttribute('hidden', '');
-  buttonAddProfile.removeAttribute('hidden');
+  avatarEditLabel.classList.remove("avatar-label-hide");
+  buttonSave.removeAttribute("hidden");
+  buttonEdit.setAttribute("hidden", "");
+  buttonAddProfile.removeAttribute("hidden");
 };
+
+// Exit Edit User Profile
 
 const exitEditMode = () => {
   fieldSetUserInfo.disabled = true;
   fieldSetUserProfiles.disabled = true;
 
-  avatarEditLabel.classList.add('avatar-label-hide');
-  buttonSave.setAttribute('hidden', '');
-  buttonEdit.removeAttribute('hidden');
-  buttonAddProfile.setAttribute('hidden', '');
+  avatarEditLabel.classList.add("avatar-label-hide");
+  buttonSave.setAttribute("hidden", "");
+  buttonEdit.removeAttribute("hidden");
+  buttonAddProfile.setAttribute("hidden", "");
 };
+
+// Update User Profile
 
 const updateProfileList = (profileList) => {
   listProfile.innerHTML = null;
 
   if (Array.isArray(profileList)) {
     profileList.forEach((item) => {
-      const listElement = document.createElement('li');
-      const textSpan = document.createElement('span');
-      const button = document.createElement('button');
+      const listElement = document.createElement("li");
+      const textSpan = document.createElement("span");
+      const button = document.createElement("button");
 
-      listElement.classList.add('profile-list-item');
-      button.classList.add('remove-profile-button');
-      button.innerText = 'X';
-      button.addEventListener('click', removeProfile(item), false);
+      listElement.classList.add("profile-list-item");
+      button.classList.add("remove-profile-button");
+      button.innerText = "X";
+      button.addEventListener("click", removeProfile(item), false);
 
       textSpan.innerText = item;
       listElement.append(textSpan, button);
@@ -105,17 +118,22 @@ const updateProfileList = (profileList) => {
 //----------------------------------------
 //  Event listeners
 //----------------------------------------
+
+// Sign out of Meditrack
+
 const onSignOut = async () => {
-  if (confirm('Do you want to sign out of MediTrack')) {
+  if (confirm("Do you want to sign out of MediTrack")) {
     try {
       const response = await signOut();
 
-      console.log('Signed out:', response);
+      console.log("Signed out:", response);
     } catch (error) {
-      console.log('Sign out error:', error);
+      console.log("Sign out error:", error);
     }
   }
 };
+
+// Update account photo
 
 const onImageUpdate = async (event) => {
   try {
@@ -124,19 +142,15 @@ const onImageUpdate = async (event) => {
     const user = window.authClient.currentUser;
 
     if (user) {
-      db
-        .collection('users')
+      db.collection("users")
         .doc(user.uid)
-        .set(
-          { ['account-photo']: base64String },
-          { merge: true },
-        )
+        .set({ ["account-photo"]: base64String }, { merge: true })
         .then((response) => {
           // the response is undefined
-          console.log('[onImageUpdate] success:', response);
+          console.log("[onImageUpdate] success:", response);
         })
         .catch((error) => {
-          console.log('[onImageUpdate] error:', error);
+          console.log("[onImageUpdate] error:", error);
         })
         .finally(() => {
           // update form
@@ -144,7 +158,7 @@ const onImageUpdate = async (event) => {
         });
     }
   } catch (error) {
-    console.log('[onImageUpdate] error:', error);
+    console.log("[onImageUpdate] error:", error);
   } finally {
     // hide "save" button by showing "edit" button
     exitEditMode();
@@ -154,22 +168,22 @@ const onImageUpdate = async (event) => {
 //----------------------------------------
 //  Add event listeners
 //----------------------------------------
-buttonSignOut.addEventListener('click', onSignOut, false);
-inputImage.addEventListener('change', onImageUpdate, false);
-document.addEventListener('DOMContentLoaded', populateInfo);
+buttonSignOut.addEventListener("click", onSignOut, false);
+inputImage.addEventListener("change", onImageUpdate, false);
+document.addEventListener("DOMContentLoaded", populateInfo);
 
 function populateInfo() {
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged((user) => {
     //Check if user is signed in
     if (user) {
-      currentUser = db.collection('users').doc(user.uid);
-      currentUser.get().then(userDoc => {
+      currentUser = db.collection("users").doc(user.uid);
+      currentUser.get().then((userDoc) => {
         const userName = userDoc.data().name;
         const email = userDoc.data().email;
         const profiles = userDoc.data().profiles;
-        const avatar = userDoc.data()['account-photo'];
+        const avatar = userDoc.data()["account-photo"];
 
-        console.log('!!!!', userDoc.data());
+        console.log("!!!!", userDoc.data());
         // if the data fields are not empty , then enrich form with the data
         if (userName != null) {
           inputName.value = userName;
@@ -183,13 +197,13 @@ function populateInfo() {
 
         updateProfileList(profiles);
 
-        console.log('[populateInfo] user, email:', userName, email);
+        console.log("[populateInfo] user, email:", userName, email);
       });
     } else {
       // User is not signed in
-      console.log('No user is signed in');
+      console.log("No user is signed in");
 
-      window.location.href = 'sign-in-scr.html';
+      window.location.href = "sign-in-scr.html";
     }
   });
 }
@@ -199,6 +213,7 @@ function editUserInfo() {
   enterEditMode();
 }
 
+// save user function
 async function saveUserInfo() {
   // get current values
   let currentEmail;
@@ -210,10 +225,9 @@ async function saveUserInfo() {
     .then((doc) => {
       currentEmail = doc.data().email;
       currentName = doc.data().name;
-
     })
     .catch((error) => {
-      console.log('[saveUserInfo] error getting current email', error);
+      console.log("[saveUserInfo] error getting current email", error);
     });
 
   // get updated values from html nodes
@@ -249,36 +263,41 @@ async function saveUserInfo() {
     Promise.all(promises)
       .then((response) => {
         // the response is Array<undefined>
-        console.log('[saveUserInfo] success:', response);
+        console.log("[saveUserInfo] success:", response);
       })
       .catch((errors) => {
         // Array<Error>
-        console.log('[saveUserInfo] error:', errors);
+        console.log("[saveUserInfo] error:", errors);
 
         // reset current state
         inputEmail.value = currentEmail;
         inputName.value = currentName;
       });
   } else {
-    console.log('[saveUserInfo] nothing to update');
+    console.log("[saveUserInfo] nothing to update");
   }
 
   // hide "save" button by showing "edit" button
   exitEditMode();
 }
 
+// add user profile
 function addProfile() {
   if (inputProfile.value) {
-    currentUser.update({
-      profiles: firebase.firestore.FieldValue.arrayUnion(inputProfile.value),
-    })
+    currentUser
+      .update({
+        profiles: firebase.firestore.FieldValue.arrayUnion(inputProfile.value),
+      })
       .then((response) => {
-        console.log('[addProfile] success: New profile name has been added', response);
+        console.log(
+          "[addProfile] success: New profile name has been added",
+          response
+        );
         // clear input state
-        inputProfile.value = '';
+        inputProfile.value = "";
       })
       .catch((error) => {
-        console.error('[addProfile] error:', error);
+        console.error("[addProfile] error:", error);
       })
       .finally(() => {
         // update profile list
@@ -287,7 +306,4 @@ function addProfile() {
   }
 }
 
-db
-  .collection('users')
-  .doc(user.uid)
-.then()
+db.collection("users").doc(user.uid).then();

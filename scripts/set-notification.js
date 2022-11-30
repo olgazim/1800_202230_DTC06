@@ -139,24 +139,24 @@ function getDatesInRange(startDate, endDate, limitedDays) {
 }
 
 function fillMedicationList(userId) {
-  db
-    .collection('users')
+  db.collection("users")
     .doc(userId)
-    .collection('medications')
+    .collection("medications")
     .get()
     .then((allMeds) => {
-      const medicationId = getUrlParam('medicationId');
+      const medicationId = getUrlParam("medicationId");
 
-      $('#medication-options')
-        .change((event) => {
-          setUrlParam('medicationId', event.target.value);
-        });
+      $("#medication-options").change((event) => {
+        setUrlParam("medicationId", event.target.value);
+      });
 
       allMeds.forEach((docRef) => {
         const doc = docRef.data();
 
-        $('#medication-options').append(`
-          <option ${medicationId === docRef.id ? 'selected' : ''} value="${docRef.id}">${doc.name}</option>
+        $("#medication-options").append(`
+          <option ${medicationId === docRef.id ? "selected" : ""} value="${
+          docRef.id
+        }">${doc.name}</option>
         `);
       });
     });

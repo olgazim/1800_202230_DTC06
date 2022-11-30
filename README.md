@@ -1,4 +1,4 @@
-## My Web Application (Add your Title here)
+## My Web Application (MediTrack)
 
 - [General info](#general-info)
 - [Technologies](#technologies)
@@ -10,7 +10,7 @@ This browser based web application to keep track of medication intake.
 
 - Hi my name is Olga. I'm excited about this project because it will help people I know.
 - Hi my name is Jason. I'm excited about this project because it will help a lot of people keep track of the medication.
-- Hi my name is Natalie and I'm excited about this project.
+- Hi my name is Natalie and I'm excited about this project because it is important that people take their medication as needed.
 
 ## Technologies
 
