@@ -45,7 +45,7 @@ function fillMedicationList(userId) {
               <br><br>
               <div class="PillDescription">Description: ${doc.description}</div>
               <br>
-              <div>Expiration: ${doc.expiration}</div>
+              <div class="PillExpiration">Expiration: ${doc.expiration}</div>
             </div>
           `
         );
