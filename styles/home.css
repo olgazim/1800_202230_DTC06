@@ -1,52 +1,55 @@
-.navbar{
-    background-color: #1a374d;
+.navbar {
+  background-color: #1a374d;
 }
 
 #appName {
-    color: white;
+  color: white;
 }
 
-.material-icons.md-48.acc-circle{
-    padding: 10px;
-    display: inline-block;
-    font-size: 48px;
+.material-icons.md-48.acc-circle {
+  padding: 10px;
+  display: inline-block;
+  font-size: 48px;
 }
 
 .dropdown {
-    font-size: 10px;
-    padding: 5px;
-    display: inline-block;
-}
-
-/* .card-container {
-    padding: 10px;
-    margin-left: 30%;
-    width: 60%;
-} */
-
-#pillsListTitle {
-    margin-left: 30%;
-    width: 60%;
-    color: #1a374d
+  font-size: 10px;
+  padding: 5px;
+  display: inline-block;
 }
 
 footer {
-    background-color: #1A374D;
+  background-color: #1a374d;
 }
 
 i.current-icon-color {
-    color: white;
+  color: white;
 }
 
 i.other-icon-color {
-    color: #406882;
+  color: #406882;
 }
 
-a.dropdown-toggle, a.dropdown-toggle.show {
-    background-color: #406882;
+a.dropdown-toggle,
+a.dropdown-toggle.show {
+  background-color: #406882;
 }
 
 a.dropdown-toggle:hover {
-    background-color: rgb(57, 88, 109);
+  background-color: rgb(57, 88, 109);
 }
 
+#notification-list {
+  padding-bottom: 3rem;
+  margin: auto;
+  max-width: 350px;
+}
+
+.notification-wrapper {
+  /* border: solid 1px #1a374d; */
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: #d6e4e5 0px 2px 3px 2px, #eff5f5 0px 2px 6px 2px;
+  color: #406882;
+}
