@@ -53,3 +53,8 @@ a.dropdown-toggle:hover {
   box-shadow: #d6e4e5 0px 2px 3px 2px, #eff5f5 0px 2px 6px 2px;
   color: #406882;
 }
+
+#notifications-title {
+  text-align: center;
+  color: #1a374d;
+}
