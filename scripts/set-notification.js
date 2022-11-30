@@ -53,6 +53,7 @@ function toggleDay(target) {
   }
 }
 
+// delete time that the user previously added
 function deleteTime(ref) {
   const input = ref.querySelector("input");
   const index = timeSlots.findIndex((item) => item === input);
@@ -65,6 +66,7 @@ function deleteTime(ref) {
   }
 }
 
+// add time that the user selects to the notification
 function addTime() {
   // do not add more than 5 tiem slots
   if (timeSlots >= TIME_SLOT_LIMIT) {
@@ -97,6 +99,7 @@ function addTime() {
     </div>
   `);
 
+  // DOM elements for time
   const timeWrapperRef = document.getElementById(`additional-time-${id}`);
   const inputTimeRef = document.getElementById(`notification-time-${id}`);
 
@@ -121,6 +124,7 @@ function showCheckboxes() {
   $(daysCheckboxes).show();
 }
 
+// set the params of the current page
 function setUrlParam(param, value) {
   const searchParams = new URLSearchParams(window.location.search);
 
@@ -133,6 +137,7 @@ function setUrlParam(param, value) {
   history.pushState(null, "", newRelativePathQuery);
 }
 
+// get the params of the current page
 function getUrlParam(param) {
   const searchParams = new URLSearchParams(window.location.search);
 
@@ -225,9 +230,10 @@ async function submitNotification() {
       !endDate ? "\n  - End Date" : ""
     }${!time.length ? "\n  - Time" : ""}`;
 
-    return window.alert(message);
+    return window.alert(message); // alert message if there are fields that are not filled out
   }
 
+  // check that the dates user selects are valid
   const limitedDays = inputEveryDay.checked ? null : selectedDaysSet;
   const dates = getDatesInRange(
     new Date(startDate),
@@ -241,6 +247,7 @@ async function submitNotification() {
 
   const batch = db.batch();
 
+  // add date and time for each notification to firebase collection
   dates.forEach((date) => {
     const dateString = date.toISOString().split("T")[0];
 
