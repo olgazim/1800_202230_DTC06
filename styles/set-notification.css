@@ -20,7 +20,6 @@ svg {
   font-size: 10px;
   padding: 5px;
   display: inline-block;
-  color: white;
 }
 
 #pillsListTitle {
@@ -50,6 +49,7 @@ svg {
 a.dropdown-toggle,
 a.dropdown-toggle.show {
   background-color: #406882;
+  color: white;
 }
 
 a.dropdown-toggle:hover {
@@ -69,7 +69,6 @@ a.dropdown-toggle:hover {
   width: 15%;
   display: none;
 }
-
 
 footer {
   background-color: #1a374d;
@@ -151,9 +150,14 @@ i.other-icon-color {
   color: #1a374d;
   background-color: transparent;
   border-color: #ced4da;
-  color: white;
+  /* color: white; */
 }
 
 #add-time {
+  color: #1a374d;
+}
+
+.set-title,
+#input-wrapper{
   color: #1a374d;
 }
