@@ -22,13 +22,15 @@ svg {
   display: inline-block;
 }
 
-#pillsListTitle {
+#pillsListTitle,
+#input-wrapper {
   margin-left: 30%;
   width: 60%;
   margin-top: 50px;
 }
 
-.date-time {
+.date-time,
+.field-wrapper {
   margin-top: 40px;
 }
 
@@ -106,4 +108,21 @@ i.other-icon-color {
 #radio-every-day,
 #radio-select-days {
   margin-right: .5rem;
+}
+
+.delete-time-button {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 2px 2px 3px #D6E4E5;
+  margin-left: .5rem;
+  transition: box-shadow .1s ease-in;
+}
+
+.delete-time-button:hover {
+  box-shadow: 3px 3px 6px lightgray;
+}
+
+.delete-time-svg {
+  margin: 0;
 }
