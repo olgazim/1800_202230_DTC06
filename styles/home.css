@@ -33,6 +33,7 @@ i.other-icon-color {
 a.dropdown-toggle,
 a.dropdown-toggle.show {
   background-color: #406882;
+  color: white;
 }
 
 a.dropdown-toggle:hover {
