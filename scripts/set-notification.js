@@ -66,7 +66,7 @@ function deleteTime(ref) {
   }
 }
 
-// add time that the user selects to the notification
+// add additional time slot 
 function addTime() {
   // do not add more than 5 tiem slots
   if (timeSlots >= TIME_SLOT_LIMIT) {
@@ -76,7 +76,7 @@ function addTime() {
   // get random value to use as unique id
   const id = Math.random();
 
-  // function to allow users to set a time to their notification and add it to the medication card
+  // render time input field with delete button
   $(timeWrapper).append(`
     <div class="field-wrapper mb-2" id="additional-time-${id}">
       <label class="form-label" for="notification-time-${id}">Time:</label>
@@ -247,7 +247,7 @@ async function submitNotification() {
 
   const batch = db.batch();
 
-  // add date and time for each notification to firebase collection
+  // add notification for each selected date and time to firebase collection
   dates.forEach((date) => {
     const dateString = date.toISOString().split("T")[0];
 
