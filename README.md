@@ -36,16 +36,12 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── assets                   # Folder for assets shared across screens
-    /bottom-nav.html         # HTML file for bottom nav bar
-    /medicine-cards.html     # HTML file for medicine cards display
     /top-nav-calendar.html   # HTML file for the calendar in the top
 
 ├── images                   # Folder for images
-    /avatar.jpg               
-    /new-logo.png
+    /avatar.jpg    
     /pills-logo.png
     /placeholder.jpg
-    /samplelogo2.png
 
 ├── screens                  # Folder for screen pages
     /account-scr.html        # this is where users can view and their account information
