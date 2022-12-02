@@ -84,7 +84,7 @@ const onSubmit = async (event) => {
         window.alert(
           "Account with this email is already a member of MediTrack. Use your email and password to sign in."
         );
-        window.location.href = "sign_in_scr.html";
+        window.location.href = "sign-in-scr.html";
       }
 
       // Show Firebase error message below the form
