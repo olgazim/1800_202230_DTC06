@@ -21,13 +21,14 @@ async function getLoggedUser() {
     }
   });
 }
-
+// get the url param
 function getUrlParam(param) {
   const searchParams = new URLSearchParams(window.location.search);
 
   return searchParams.get(param);
 }
 
+// fill the medication list
 function fillMedicationList(userId, medicationId) {
   db.collection("users")
     .doc(userId)
@@ -45,6 +46,7 @@ function fillMedicationList(userId, medicationId) {
     });
 }
 
+// grab the values from the form and fill the fields
 function fillValues(userId, medicationId, notificationId) {
   if (!userId || !medicationId || !notificationId) {
     window.alert("Error getting notification data.");
@@ -75,7 +77,7 @@ function fillValues(userId, medicationId, notificationId) {
       });
   }
 }
-
+// setup the page
 function setup() {
   const medicationId = getUrlParam("medicationId");
   const notificationId = getUrlParam("notificationId");
@@ -88,7 +90,7 @@ function setup() {
   fillMedicationList(currentUserId, medicationId);
   fillValues(currentUserId, medicationId, notificationId);
 }
-
+// update the notification
 function editNotification() {
   const date = inputDate.value;
   const time = inputTime.value;
