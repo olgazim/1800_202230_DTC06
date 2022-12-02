@@ -22,21 +22,6 @@ svg {
   display: inline-block;
 }
 
-#pillsListTitle {
-  margin-left: 30%;
-  width: 60%;
-  margin-top: 50px;
-}
-
-.date-time {
-  margin-top: 40px;
-}
-
-.set-additional {
-  text-align: center;
-  margin-top: 50px;
-}
-
 .cancelButton {
   text-decoration: none;
   color: aliceblue;
@@ -54,20 +39,6 @@ a.dropdown-toggle.show {
 
 a.dropdown-toggle:hover {
   background-color: rgb(57, 88, 109);
-}
-
-.frequencyButtons {
-  margin-top: 2%;
-  margin-left: 30%;
-  width: 60%;
-}
-
-#checkboxDays {
-  margin-top: 2%;
-  margin-left: 30%;
-  padding-left: 1.5rem;
-  width: 15%;
-  display: none;
 }
 
 footer {
@@ -89,18 +60,6 @@ i.other-icon-color {
 #add-notification {
   background-color: #406882;
   color: white;
-}
-
-#setAnotherButton {
-  margin-top: 2%;
-  margin-left: 40%;
-  border-radius: 10px;
-  padding: 2%;
-  width: 30%;
-  color: white;
-  text-align: center;
-  border: none;
-  background-color: #406882;
 }
 
 .set-title {

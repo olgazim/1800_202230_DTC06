@@ -1,7 +1,6 @@
 "use strict";
 
 var currentUser;
-// var currentUserAuth = authClient.user
 
 //----------------------------------------
 //  Get DOM nodes
@@ -20,15 +19,12 @@ const fieldSetUserInfo = document.getElementById("userInfo");
 const fieldSetUserProfiles = document.getElementById("user-profiles");
 const avatarEditLabel = document.getElementById("avatar-edit-label");
 
-// Firebase actions
 // Sign out
-
 const signOut = () => {
   return authClient.signOut();
 };
 
 // Remove profile
-
 const removeProfile = (profileName) => () => {
   if (profileName) {
     currentUser
@@ -57,6 +53,7 @@ const removeProfile = (profileName) => () => {
 //  Helpers
 //----------------------------------------
 
+// convert image to base64 to be stored in firebase
 const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -69,7 +66,6 @@ const convertToBase64 = (file) => {
 };
 
 // Edit User Profile
-
 const enterEditMode = () => {
   fieldSetUserInfo.disabled = false;
   fieldSetUserProfiles.disabled = false;
@@ -81,7 +77,6 @@ const enterEditMode = () => {
 };
 
 // Exit Edit User Profile
-
 const exitEditMode = () => {
   fieldSetUserInfo.disabled = true;
   fieldSetUserProfiles.disabled = true;
@@ -93,7 +88,6 @@ const exitEditMode = () => {
 };
 
 // Update User Profile
-
 const updateProfileList = (profileList) => {
   listProfile.innerHTML = null;
 
@@ -119,8 +113,7 @@ const updateProfileList = (profileList) => {
 //  Event listeners
 //----------------------------------------
 
-// Sign out of Meditrack
-
+// Sign out from Meditrack
 const onSignOut = async () => {
   if (confirm("Do you want to sign out of MediTrack")) {
     try {
@@ -134,7 +127,6 @@ const onSignOut = async () => {
 };
 
 // Update account photo
-
 const onImageUpdate = async (event) => {
   try {
     const file = event.target.files[0];
@@ -146,8 +138,7 @@ const onImageUpdate = async (event) => {
         .doc(user.uid)
         .set({ ["account-photo"]: base64String }, { merge: true })
         .then((response) => {
-          // the response is undefined
-          console.log("[onImageUpdate] success:", response);
+          console.log("[onImageUpdate] success");
         })
         .catch((error) => {
           console.log("[onImageUpdate] error:", error);
@@ -172,6 +163,7 @@ buttonSignOut.addEventListener("click", onSignOut, false);
 inputImage.addEventListener("change", onImageUpdate, false);
 document.addEventListener("DOMContentLoaded", populateInfo);
 
+// fill form with user's data from db
 function populateInfo() {
   firebase.auth().onAuthStateChanged((user) => {
     //Check if user is signed in
@@ -305,5 +297,3 @@ function addProfile() {
       });
   }
 }
-
-// db.collection("users").doc(user.uid).then();

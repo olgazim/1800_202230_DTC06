@@ -1,10 +1,12 @@
 let currentUserId;
 
-const inputDate = document.getElementById('notification-date');
-const inputTime = document.getElementById('notification-time');
-const inputOption = document.getElementById('medication-options');
-const inputDosage = document.getElementById('medication-dosage');
+// DOM elements
+const inputDate = document.getElementById("notification-date");
+const inputTime = document.getElementById("notification-time");
+const inputOption = document.getElementById("medication-options");
+const inputDosage = document.getElementById("medication-dosage");
 
+// get the current logged-in user info
 async function getLoggedUser() {
   await firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -14,8 +16,8 @@ async function getLoggedUser() {
 
       setup();
     } else {
-      window.alert('Forbidden. Redirecting to login page...');
-      window.location.href = 'sign_in_scr.html';
+      window.alert("Forbidden. Redirecting to login page...");
+      window.location.href = "sign_in_scr.html";
     }
   });
 }
@@ -27,17 +29,16 @@ function getUrlParam(param) {
 }
 
 function fillMedicationList(userId, medicationId) {
-  db
-    .collection('users')
+  db.collection("users")
     .doc(userId)
-    .collection('medications')
+    .collection("medications")
     .get()
     .then((medicationsCollection) => {
       medicationsCollection.forEach((docRef) => {
-        const {name} = docRef.data();
-        const selected = medicationId === docRef.id ? 'selected' : '';
+        const { name } = docRef.data();
+        const selected = medicationId === docRef.id ? "selected" : "";
 
-        $('#medication-options').append(`
+        $("#medication-options").append(`
           <option ${selected} value="${docRef.id}">${name}</option>
         `);
       });
@@ -46,42 +47,41 @@ function fillMedicationList(userId, medicationId) {
 
 function fillValues(userId, medicationId, notificationId) {
   if (!userId || !medicationId || !notificationId) {
-    window.alert('Error getting notification data.');
+    window.alert("Error getting notification data.");
   } else {
-    db
-      .collection('users')
+    db.collection("users")
       .doc(userId)
-      .collection('medications')
+      .collection("medications")
       .doc(medicationId)
-      .collection('notifications')
+      .collection("notifications")
       .doc(notificationId)
       .get()
-        .then((response) => {
+      .then((response) => {
         const data = response.data();
         const date = data.dateTime.toDate();
         const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date.getDate().toString().padStart(2, "0");
 
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const hours = date.getHours().toString().padStart(2, "0");
+        const minutes = date.getMinutes().toString().padStart(2, "0");
 
         inputDosage.value = data.dosage;
         inputDate.value = `${year}-${month}-${day}`;
         inputTime.value = `${hours}:${minutes}`;
       })
       .catch((error) => {
-        console.log('[fillValues] error:', error);
+        console.log("[fillValues] error:", error);
       });
   }
 }
 
 function setup() {
-  const medicationId = getUrlParam('medicationId');
-  const notificationId = getUrlParam('notificationId');
+  const medicationId = getUrlParam("medicationId");
+  const notificationId = getUrlParam("notificationId");
 
   if (!medicationId || !notificationId || !currentUserId) {
-    window.alert('Not enough data to edit notification. Redirecting back...');
+    window.alert("Not enough data to edit notification. Redirecting back...");
     // return window.history.back();
   }
 
@@ -93,9 +93,11 @@ function editNotification() {
   const date = inputDate.value;
   const time = inputTime.value;
   const dosage = inputDosage.value;
-  const dateTime = firebase.firestore.Timestamp.fromDate(new Date(`${date}T${time}`));
+  const dateTime = firebase.firestore.Timestamp.fromDate(
+    new Date(`${date}T${time}`)
+  );
   const medicationId = inputOption.value;
-  const notificationId = getUrlParam('notificationId');
+  const notificationId = getUrlParam("notificationId");
 
   if (!date || !time || !dosage || !medicationId || !currentUserId) {
     return;
@@ -104,23 +106,22 @@ function editNotification() {
   const payload = {
     dateTime,
     dosage,
-    profile: '',
+    profile: "",
   };
 
-  db
-    .collection('users')
+  db.collection("users")
     .doc(currentUserId)
-    .collection('medications')
+    .collection("medications")
     .doc(medicationId)
-    .collection('notifications')
+    .collection("notifications")
     .doc(notificationId)
     .set(payload)
     .then(() => {
-      window.alert('Notification updated successfully.');
-      window.location = 'notification-scr.html';
+      window.alert("Notification updated successfully.");
+      window.location = "notification-scr.html";
     })
     .catch((error) => {
-      console.error('Error: ', error);
+      console.error("Error: ", error);
     });
 }
 

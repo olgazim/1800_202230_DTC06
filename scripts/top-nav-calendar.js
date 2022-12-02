@@ -58,3 +58,5 @@ function getTotalDaysInMonth(date) {
   );
   return days;
 }
+
+fillWeeklyCalendarHeader();
