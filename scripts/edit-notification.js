@@ -77,7 +77,7 @@ function fillValues(userId, medicationId, notificationId) {
       });
   }
 }
-// setup the page
+// set medicationId and notificationId from url params
 function setup() {
   const medicationId = getUrlParam("medicationId");
   const notificationId = getUrlParam("notificationId");

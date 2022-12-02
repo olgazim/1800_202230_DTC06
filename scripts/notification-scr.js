@@ -18,8 +18,6 @@ var y = n.getFullYear();
 var m = n.getMonth();
 var d = n.getDate();
 
-// document.getElementById("date").innerHTML = d + " " + months[m] + " " + y;
-
 // authenticate user and get medications
 function getNotificationsList() {
   firebase.auth().onAuthStateChanged(async (user) => {
@@ -58,6 +56,7 @@ function getNotificationsList() {
           response.forEach((notificationCollection, index) => {
             const medication = medications[index];
 
+            // invoke in a loop buildNotifications and pass required data
             notificationCollection.docs.forEach((notification) => {
               buildNotifications(
                 notification.id,
@@ -77,7 +76,7 @@ function getNotificationsList() {
   });
 }
 
-// implement notification cards onto screen
+// render notification cards with data from db
 function buildNotifications(id, data, medication) {
   const [date, time] = data.dateTime.toDate().toLocaleString().split(",");
 
@@ -143,4 +142,3 @@ function editNotification(notificationId, medicationId) {
 }
 
 getNotificationsList();
-// window.location.href='edit-medication.html?docId=${docRef.id}'
